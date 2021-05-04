@@ -1,4 +1,4 @@
-# Games & Interactive applications
+# Computer Graphics Applications
 
 Here are the games I've programmed using variant technologies and concepts such as Computer Graphics, and Algorithms.
 
