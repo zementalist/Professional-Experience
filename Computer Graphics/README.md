@@ -1,6 +1,6 @@
 # Computer Graphics Applications
 
-Here are the games I've programmed using variant technologies and concepts such as Computer Graphics, and Algorithms.
+All of these applications are written in Native JavaScript & C++ (Except #1 app)
 
 1- Bouncy Ball
 
