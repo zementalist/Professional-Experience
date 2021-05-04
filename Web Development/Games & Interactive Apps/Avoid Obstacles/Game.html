@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game</title>
+	<style type="text/css" rel="stylesheet">
+		canvas {
+			border: 1px solid black;
+			margin-left: 450px;
+			margin-top: 100px;
+			background-color: white;
+		}
+	</style>
+</head>
+<body onkeypress="keyword(event)" style="background-color: black;">
+     <h1 style="color: darkred; position: absolute; border: 1px solid black; background-image: -webkit-linear-gradient(#E92C2C, #FFFF00); left: 0px; right: 30px; padding: 0px 560px 0px 580px;">Funny Games</h1> <br> <br>
+     <canvas id="canvas" width="400" height="400"></canvas>
+     <h1 style="position: absolute; left: 540px; top: 60px; color: yellow;">The Funny Square</h1>
+     <h1 style="position: absolute; left: 600px; color: blue;" id="tit"></h1>
+     <h1 style="position: absolute; top: 290px; left: 560px; color: red;" id="over"></h1>
+     <p style="color: white; position: absolute; left: 420px; top: 610px; border: 1px solid purple; margin: 5px;"><b style="font-size: 20px;">How to play: </b>Use W\S\A\D to move, try not to crash at the obtaacles !</p>
+     <a href="nowhere"> <img style="position: absolute; left: 50px; top: 130px; height: 400px; width: 300px;" src="C:\\Users\Zeyad-Pc\Desktop\Programming Questions\adv1.gif"></a>
+     <a href="noWhere"><img style="position: absolute; left: 1010px; top: 120px; height: 400px; width: 300px;" src="C:\\Users\Zeyad-Pc\Desktop\Programming Questions\adv2.jpg"></a>
+	<script type="text/javascript">
+	var obstac = [];
+	var lap = 0;
+	var score = 0;
+	var myGame = {
+		canvas : document.getElementById('canvas'),
+		ctx : canvas.getContext('2d'),
+		clear : function() {
+			myGame.ctx.clearRect(0, 0, 400, 400);
+		}
+	}
+	function components(width, height, x, y, color) {
+		this.width = width;
+		this.height = height;
+		this.x = x;
+		this.y = y;
+		myGame.ctx.fillStyle = color;
+		myGame.ctx.fillRect(this.x, this.y, this.width, this.height);
+		this.update = function() {
+			myGame.ctx.clearRect(this.x + 5, this.y + 5, this.width + 5, this.height + 5);
+			myGame.ctx.clearRect(this.x -5, this.y - 5, this.width - 5, this.height - 5);
+			myGame.ctx.clearRect(this.x +5, this.y -5, this.width +5, this.height - 5);
+			myGame.ctx.clearRect(this.x -5, this.y +5, this.width -5, this.height +5);
+			myGame.ctx.clearRect(this.x, this.y, this.width, this.height);
+			myGame.ctx.fillStyle = color;
+			myGame.ctx.fillRect(this.x, this.y, this.width, this.height);
+		}
+	}
+	var one = new components(50, 50, 20, 150, "yellow");
+	function updateGame() {
+		one.update();
+	};
+	function updateGame2() {
+		lam1.update();
+	}
+	function moveup() {
+		one.y -= 5;
+	}
+	function movedown() {
+		one.y += 5;
+	}
+	function moveleft() {
+		one.x -= 5;
+	}
+	function moveright() {
+		one.x += 5;
+	}
+	var lambdaframe = 0;
+	function updating() {
+		document.getElementById("tit").innerHTML = "Score: " + score
+		for (var i in obstac) {
+		obstac[i].update();
+		obstac[i].x -= 1;
+		if (one.x + 47 === obstac[i].x) {
+			score += 100
+			if (obstac[i].height2 - one.y >= 4) {
+				document.getElementById("over").innerHTML = "GAME OVER!";
+				clearInterval(moving_lambada);
+				clearTimeout(lambadas);
+			}
+			if ((400 - obstac[i].height - one.y) < 49) {
+				document.getElementById("over").innerHTML = "GAME OVER!";
+				clearInterval(moving_lambada);
+				clearTimeout(lambadas);
+			}
+		}
+	}
+	}
+	var hs, vs;
+	function lambda(x) {
+		this.width = 10;
+		hs = Math.floor(Math.random() * 200);
+		while(hs <= 100) {
+			hs = Math.floor(Math.random() * 200);
+		}
+		this.height = hs
+		this.x = x;
+		vs = 400 - hs;
+		this.y = vs;
+		myGame.ctx.fillStyle = 'green';
+		myGame.ctx.fillRect(this.x, this.y, this.width, this.height);
+		this.width2 = 10;
+		hs2 = Math.floor(Math.random() * 170);
+		while (hs2 <= 100) {
+			hs2 = Math.floor(Math.random() * 170);
+		}
+		this.height2 = hs2;
+		vs2 = 400 - hs2;
+		this.y2 = 0;
+		myGame.ctx.fillRect(this.x, this.y2, this.width2, this.height2);
+		this.update = function() {
+			myGame.ctx.clearRect(this.x, this.y, this.width + 10, this.height);
+			myGame.ctx.clearRect(this.x, this.y, this.width - 10, this.height);
+			myGame.ctx.clearRect(this.x, this.y, this.width, this.height);
+			myGame.ctx.clearRect(this.x, this.y2, this.width2 + 10, this.height2);
+			myGame.ctx.clearRect(this.x, this.y2, this.width2 - 10, this.height2);
+			myGame.ctx.clearRect(this.x, this.y2, this.width2, this.height2);
+			myGame.ctx.fillStyle = 'green';
+			myGame.ctx.fillRect(this.x, this.y, this.width, this.height);
+			myGame.ctx.fillRect(this.x, this.y2, this.width2, this.height2);
+		}
+	}
+	function keyword(event) {
+		if (window.event) {
+			key = event.keyCode;
+		}
+		key = String.fromCharCode(key).toLowerCase();
+		if (key === 'a') {
+			moveleft();
+			updateGame();
+			score += 5;
+		}
+		if (key === 'd') {
+			moveright();
+			updateGame();
+			score +=5;
+		}
+		if (key === 'w') {
+			moveup();
+			updateGame();
+			score += 5;
+		}
+		if (key === 's') {
+			movedown();
+			updateGame();
+			score += 5;
+		}
+	}
+	var lambadas;
+	function lambs() {
+		obstac.push(new lambda(390));
+		lap += 1;
+		lambadas = setTimeout(lambs, 700);
+	}
+	moving_lambada = setInterval(updating, 10);
+	lambs();
+	</script>
+</body>
+</html>

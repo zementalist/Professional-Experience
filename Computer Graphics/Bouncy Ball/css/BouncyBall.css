@@ -1,0 +1,192 @@
+#gameFrame {
+    width: 100%;
+    height: 60vh;
+    background-color:cornflowerblue;
+}
+#playBtn {
+    width: 100%;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #fff;
+    display: inline-block;
+    width: 100%;
+    padding: 0px 15px 0px 15px;
+    border-radius: 40px;
+    color: #292929;
+    font-weight: 700;
+    -webkit-box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+    position: relative;
+}
+#playBtn:hover {
+    background-color: #227dc7;
+    border-color:blue;
+    color:white;
+}
+.gameIntroContent {
+    padding-top: 25vh;
+}
+.ballStage {
+    display: inline-block;
+}
+#ball, #ball1, #ball2, #ball3 {
+    width: 3rem;
+    height: 3rem;
+    border: 0px solid inherit;
+    /*background-color: white;*/
+    position: relative;
+    display: block;
+    background: black;
+    border-radius: 100%;
+    background: radial-gradient(circle at 1rem 1rem, #5cabff, #000);
+
+}
+#ball1, #ball2, #ball3 {
+    text-align: center;
+    color:white;
+    padding-top:10px;
+    font-weight: 900;
+    cursor: pointer;
+    margin-top:2px;
+}
+#ball2 {
+    background: radial-gradient(circle at 1rem 1rem,  lightblue,black  70%);
+}
+#ball3 {
+    background: radial-gradient(circle at bottom, #ffffff, #ffffff 10%, #f91212 80%, #ffffff 100%);
+}
+.ball:before {
+    content: "";
+    position: absolute;
+    top: 1%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;
+    background: radial-gradient(circle at top, white, rgba(255, 255, 255, 0) 58%);
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    z-index: 2; 
+}
+.ball:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 5%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    border-radius: 100%;
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+    z-index: 2;
+    -webkit-transform: rotateZ(-30deg);
+    transform: rotateZ(-30deg); 
+}
+.ball {
+
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+    -webkit-transform: rotateX(90deg) translateZ(-160px);
+    transform: rotateX(90deg) translateZ(-160px);
+    z-index: 1; 
+}
+
+.ball:before, .ball:after {
+  display: none;
+}
+.ball.bubble {
+    background: radial-gradient(circle at 50% 55%, rgba(240, 245, 255, 0.9), rgba(240, 245, 255, 0.9) 40%, rgba(225, 238, 255, 0.8) 60%, rgba(43, 130, 255, 0.4));
+    -webkit-animation: bubble-anim 2s ease-out infinite;
+    animation: bubble-anim 2s ease-out infinite;
+}
+.ball.bubble:before {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    height: 80%;
+    width: 40%;
+    background: radial-gradient(circle at 130% 130%, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.8) 58%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%);
+    -webkit-transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
+    transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg); 
+}
+.ball.bubble:after {
+    display: block;
+    background: radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 74%, white 80%, white 84%, rgba(255, 255, 255, 0) 100%);
+}
+
+
+@-webkit-keyframes bubble-anim {
+0% {
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+
+20% {
+    -webkit-transform: scaleY(0.95) scaleX(1.05);
+    transform: scaleY(0.95) scaleX(1.05); }
+
+48% {
+    -webkit-transform: scaleY(1.1) scaleX(0.9);
+    transform: scaleY(1.1) scaleX(0.9); }
+
+68% {
+    -webkit-transform: scaleY(0.98) scaleX(1.02);
+    transform: scaleY(0.98) scaleX(1.02); }
+
+80% {
+    -webkit-transform: scaleY(1.02) scaleX(0.98);
+    transform: scaleY(1.02) scaleX(0.98); }
+
+97%, 100% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+@keyframes bubble-anim {
+0% {
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+
+20% {
+    -webkit-transform: scaleY(0.95) scaleX(1.05);
+    transform: scaleY(0.95) scaleX(1.05); }
+
+48% {
+    -webkit-transform: scaleY(1.1) scaleX(0.9);
+    transform: scaleY(1.1) scaleX(0.9); }
+
+68% {
+    -webkit-transform: scaleY(0.98) scaleX(1.02);
+    transform: scaleY(0.98) scaleX(1.02); }
+
+80% {
+    -webkit-transform: scaleY(1.02) scaleX(0.98);
+    transform: scaleY(1.02) scaleX(0.98); }
+
+97%, 100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    } 
+}
+#score {
+    font-weight: 900;
+    color:white;
+    visibility: hidden;
+}
+#ground {
+    transition: 0.75s;
+}
+#obstacle {
+    width: 1rem;
+    height: 7rem;
+    background-color:lawngreen;
+    position: absolute;
+
+}
+.obstacle {
+    width: 1rem;
+    background-color:lawngreen;
+    position: absolute;
+    margin-left: 145%;
+    opacity: 0;
+}

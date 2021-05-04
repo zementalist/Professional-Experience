@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Tic Tac Toe</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <style>
+		#body {
+			background: -webkit-linear-gradient(right, transparent 0%,#6F0FD5 50%,transparent 80%);
+		}
+		table {
+		  width: 100%;
+		  border-collapse: collapse;
+		  margin-top: 10%;
+		  background-color: white;
+		  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+   		 -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+   	      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    	  border: 0.5px solid white;
+    	  cursor: pointer;
+    	  z-index: 1;
+    	  position: relative;
+		}
+		td {
+		  width: 33.333%;
+		  border: 6px solid #222;
+		}
+		td::after {
+		  content: '';
+		  display: block;
+		  margin-top: 100%;
+		}
+		td {
+		  border: 6px solid #222;
+		}
+		td:first-of-type {
+		  border-left-color: transparent;
+		  border-top-color: transparent;
+		}
+		td:nth-of-type(2) {
+		  border-top-color: transparent;
+		}
+		td:nth-of-type(3) {
+		  border-right-color: transparent;
+		  border-top-color: transparent;
+		}
+		tr:nth-of-type(3) td {
+		  border-bottom-color: transparent;
+		}
+		h3 {
+			color: #FF7000;
+			box-shadow: 2px 2px lightgray;
+			margin-top: 20%;
+			font-size: 28px;
+		}
+		img {
+			position: absolute;
+			margin-left: 2%;
+			margin-top: 2%;
+		}
+		.imgCard {
+			position: absolute;
+			margin-left: 4%;
+			margin-top: 5%;
+			width: 100px;
+			height: 100px;
+		}
+		.winCard {
+			position: absolute;
+			margin-left: -3vw;
+			margin-top: 5%;
+			width: 100px;
+			height: 100px;
+		}
+		.winCard2 {
+			position: absolute;
+			margin-left: 2vw;
+			margin-top: -4%;
+			width: 40px;
+			height: 40px;
+		}
+		h4 {
+			color: #FFA600;
+			font-size: 20px;
+			box-shadow: 2px 2px lightgray;
+		}
+		h2 {
+			color: #FFA600;
+			text-align: center;
+		}
+		.playRules {
+			margin-top: 20rem;
+		}
+		#winner {
+			margin-top: 25rem;
+			display: none;
+			opacity: 0;
+			transition: 0.5s;
+		}
+		#winner-won {
+			margin-top: 25rem;
+			display: block;
+			opacity: 1;
+			transition: 0.5s;
+		}
+		#resetBtn {
+			position: absolute; width: 50%;margin-top: 65px;margin-left: 3rem;
+		}
+		@media all and (min-width: 1126px) {
+			.imgCard {
+				margin-left: 6%;
+				margin-top: 7%;
+			}
+		}
+		@media all and (min-width: 600px) and (max-width: 991px) {
+			body {
+				font: 90%;
+				width: 90%;
+				height: 90%;
+			}
+			.imgCard {
+				margin-left: 8%;
+				margin-top: 9%;
+			}
+		}
+		@media all and (max-width: 414px) {
+			.imgCard {
+				width: 80px;
+				height: 80px;
+			}
+		}
+		@media all and (max-width: 320px) {
+			.imgCard {
+				margin-top: 1%;
+				margin-left: 0px;
+			}
+		}
+		@media all and (max-width: 428px) and (min-width: 321px){
+			.imgCard {
+				margin-left: 1%;
+				margin-top: 2%;
+			}
+			#winner {
+				margin-top: 5rem;
+			}
+			#resetBtn {
+				position: static;
+				margin-top: 20px;
+				margin-left: auto;
+			}
+			.winCard {
+				margin-left: -15vw;
+			}
+			.winCard2 {
+				margin-top: -3%;
+			}
+			#board {
+				margin-top: 5%;
+			}
+			body {
+				font: 95%;
+				width: 95%;
+				height: 95%;
+			}
+		}
+		.retro {
+		  -webkit-box-sizing: content-box;
+		  -moz-box-sizing: content-box;
+		  box-sizing: content-box;
+		  margin: 0 auto;
+		  border: none;
+		  font: normal 4em/normal "Anton", Helvetica, sans-serif;
+		  color: rgb(112, 112, 112);
+		  text-align: center;
+		  text-transform: uppercase;
+		  -o-text-overflow: clip;
+		  text-overflow: clip;
+		  letter-spacing: 10px;
+		  text-shadow: 4px 4px 0 rgb(238,238,238) , 6px 6px 0 rgb(112,112,112) ;
+		}
+		.blue-3d-text {
+		  text-transform: uppercase;
+		  box-shadow: none;
+		  -webkit-box-sizing: content-box;
+		  -moz-box-sizing: content-box;
+		  box-sizing: content-box;
+		  border: none;
+		  font: normal 4em/normal "Arvo", Helvetica, sans-serif;
+		  color: rgb(228, 243, 249);
+		  text-align: center;
+		  -o-text-overflow: clip;
+		  text-overflow: clip;
+		  text-shadow: -2px -2px 1px rgb(255,255,255) , -1px -1px 1px rgb(255,255,255) , 1px 1px 1px rgba(232,247,255,0.901961) , 1px 1px 0 rgb(42,101,139) , 2px 2px 0 rgb(41,99,138) , 3px 3px 0 rgb(40,97,136) , 4px 4px 0 rgb(39,95,133) , 5px 5px 0 rgb(38,93,131) , 6px 6px 0 rgb(37,90,128) , 7px 7px 0 rgb(36,87,125) , 8px 8px 0 rgb(35,84,121) , 9px 9px 0 rgb(33,80,117) , 10px 10px 0 rgb(31,76,113) , 11px 11px 0 rgb(30,72,108) , 12px 12px 1px rgba(28,67,103,0.498039) , 14px 14px 12px rgba(5,13,20,0.498039) ;
+		  -webkit-transition: all 201ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+		  -moz-transition: all 201ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+		  -o-transition: all 201ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+		  transition: all 201ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+		}
+
+		.blue-3d-text:hover {
+		  text-shadow: -2px -2px 1px rgb(255,255,255) , -1px -1px 1px rgb(255,255,255) , 1px 1px 1px rgba(232,247,255,0.901961) , 2px 3px 1px rgba(28,67,103,0.498039) , 5px 5px 12px rgba(5,13,20,0.498039) ;
+		  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+		  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+		  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+		  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+		}
+    </style>
+</head>
+<body onload="generateBasicData()">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-3 col-2">
+						<h3>
+							  Player <span style='color:black;font-size:20px;'>vs</span> Computer
+						</h3>
+						<div class="playRules">
+							<div id="playerIcons">
+
+							</div>
+						</div>
+						<div class="playTurn">
+							<h3 id="turn">
+
+							</h3>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<table id="board">
+							<tr>
+								<td class="cell c1" onclick="play(this)"></td>
+								<td class="cell c2" onclick="play(this)"></td>
+								<td class="cell c3" onclick="play(this)"></td>
+							</tr>
+							<tr>
+								<td class="cell c4" onclick="play(this)"></td>
+								<td class="cell c5" onclick="play(this)"></td>
+								<td class="cell c6" onclick="play(this)"></td>
+							</tr>
+							<tr>
+								<td class="cell c7" onclick="play(this)"></td>
+								<td class="cell c8" onclick="play(this)"></td>
+								<td class="cell c9" onclick="play(this)"></td>
+							</tr>
+						</table>
+					</div>
+					<div class="col-md-3">
+						<div>
+							<input id="resetBtn" type="button" name="btn" class="btn btn-danger" value="Reset" onclick="reset()" title="Only first-joined player can reset!">
+						</div>
+						<div id="winner">
+							<h2 class="retro" id="retro">Winner:</h2>
+							<h4 id="winnerText" class="blue-3d-text"> <?php echo $_SESSION['usrname'] ?> </h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var iconsArray = ['x.png', 'o.png'];
+		var players = ['Your', 'Computer\'s'];
+		var username = players[0];
+		var pcname = players[1];
+		var turnNumber = 0;
+		var cells = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9'];
+		var winMethods = [ ['c1', 'c2', 'c3'], ['c4', 'c5', 'c6'], ['c7', 'c8', 'c9'], ['c1', 'c4', 'c7'], ['c2', 'c5', 'c8'], ['c3', 'c6', 'c9'], ['c1', 'c5', 'c9'], ['c3', 'c5', 'c7'] ];
+		var playerIcons = document.getElementById("playerIcons");
+		var board = document.getElementById('board');
+		var userIcon, pcIcon, playerTurn;
+		var turn = document.getElementById("turn");
+		function generateBasicData() {
+			rand = Math.round(Math.random() * 1);
+			turnNumber = 0;
+			userIcon = iconsArray[rand];
+			pcIcon = rand == 0 ? iconsArray[1] : iconsArray[0];
+			playerTurn = players[rand];
+			playerIcons.innerHTML = "<h4>You : <img src='" + userIcon + "' style='width:15px;height:15px;'></h4><br><h4>Computer: <img src='" + pcIcon + "' style='width:15px;height:15px;'></h4>";
+			turn.innerHTML = playerTurn + " turn!";
+			if(playerTurn == pcname) {
+				setTimeout(computerPlay, Math.round(Math.random() * 1000) + 1000);
+			}
+		}
+		function play(cell) {
+			if(cell.innerHTML == "" && playerTurn == username && !win()) {
+				cell.innerHTML = "<img class='imgCard' src='" + userIcon + "'>";
+				playerTurn = pcname;
+				turnNumber++;
+				turn.innerHTML = playerTurn + " turn!";
+				var won = win();
+				if(!won) {
+					setTimeout(computerPlay, Math.round(Math.random() * 1000) + 1000);
+				}
+			}
+		}
+		function imgType(cell) {
+			var text = String(cell.innerHTML);
+			if(text.includes("o.png")) {
+				return "o.png";
+			}
+			else if(text.includes("x.png")) {
+				return "x.png";
+			}
+			else {
+				return 'none';
+			}
+		}
+		function computerPlay() {
+			if(!win()) {
+				if(turnNumber <= 2) {
+					var cell = null;
+					var AIRANDOM = Math.floor(Math.random() * 1);
+					var randomClass = null;
+					if(AIRANDOM != 0) {
+						randomClass = 'c' + String(Math.floor(Math.random() * 9) + 1);
+						cell = document.getElementsByClassName('c5')[0];
+					}
+					else {
+						randomClass = 'c' + String(Math.floor(Math.random() * 9) + 1);
+						console.log("ran = " + randomClass)
+						cell = document.getElementsByClassName(randomClass)[0];
+					}
+					while(cell.innerHTML.length > 0) {
+						randomClass = parseInt(randomClass.replace("c", ""));
+						randomClass = 'c' + (randomClass >= 9 || !randomClass == 1 || !randomClass == 4 || !randomClass == 7 ? --randomClass - 1 : randomClass + 1);
+						console.log(randomClass);
+						randomClass = String(randomClass);
+						cell = document.getElementsByClassName(randomClass)[0];
+					}
+					cell.innerHTML = "<img class='imgCard' src='" + pcIcon + "'>";
+					playerTurn = username;
+					turn.innerHTML = playerTurn + " turn!";
+					turnNumber++;
+				} 
+				else {
+					var attackCell, defenseCell, attackPeriority = 0, defensePeriority = 0;
+					var emptyCells = [];
+					for(var i = 0; i < winMethods.length; i++) {
+						var cell1 = document.getElementsByClassName(winMethods[i][0])[0];
+						var cell2 = document.getElementsByClassName(winMethods[i][1])[0];
+						var cell3 = document.getElementsByClassName(winMethods[i][2])[0];
+						if( (imgType(cell1) == pcIcon && imgType(cell2) == pcIcon && cell3.innerHTML == "") || (imgType(cell1) == pcIcon && imgType(cell3) == pcIcon && cell2.innerHTML == "") || (imgType(cell2) == pcIcon && imgType(cell3) == pcIcon && cell1.innerHTML == "") ) {
+							if(imgType(cell1) == pcIcon && imgType(cell2) == pcIcon && cell3.innerHTML == "") {
+								attackCell = cell3;
+								playerTurn = username;
+								turn.innerHTML = playerTurn + " turn!";
+								turnNumber++;
+								attackPeriority++;
+							}
+							else if(imgType(cell1) == pcIcon && imgType(cell3) == pcIcon && cell2.innerHTML == "") {
+								attackCell = cell2;
+								playerTurn = username;
+								turn.innerHTML = playerTurn + " turn!";
+								turnNumber++;
+								attackPeriority++;
+							}
+							else if(imgType(cell2) == pcIcon && imgType(cell3) == pcIcon && cell1.innerHTML == "") {
+								attackCell = cell1;
+								playerTurn = username;
+								turn.innerHTML = playerTurn + " turn!";
+								turnNumber++;
+								attackPeriority++;
+							}
+						}
+						else if( (imgType(cell1) == userIcon && imgType(cell2) == userIcon && cell3.innerHTML == "") || (imgType(cell1) == userIcon && imgType(cell3) == userIcon && cell2.innerHTML == "") || (imgType(cell2) == userIcon && imgType(cell3) == userIcon && cell1.innerHTML == "") ) {
+							if(imgType(cell1) == userIcon && imgType(cell2) == userIcon && cell3.innerHTML == "") {
+								defenseCell = cell3;
+								playerTurn = username;
+								turn.innerHTML = playerTurn + " turn!";
+								turnNumber++;
+								defensePeriority++;
+							}
+							else if(imgType(cell1) == userIcon && imgType(cell3) == userIcon && cell2.innerHTML == "") {
+								defenseCell = cell2;
+								playerTurn = username;
+								turn.innerHTML = playerTurn + " turn!";
+								turnNumber++;
+								defensePeriority++;
+							}
+							else if(imgType(cell2) == userIcon && imgType(cell3) == userIcon && cell1.innerHTML == "") {
+								defenseCell = cell1;
+								playerTurn = username;
+								turn.innerHTML = playerTurn + " turn!";
+								turnNumber++;
+								defensePeriority++;
+							}
+						}
+						else if((cell1.innerHTML == "" || cell2.innerHTML == "" || cell3.innerHTML == "")) {
+							if(cell1.innerHTML == "") {
+								emptyCells.push(winMethods[i][0]);
+							}
+							else if(cell2.innerHTML == "") {
+								emptyCells.push(winMethods[i][1]);
+							}
+							else {
+								emptyCells.push(winMethods[i][2]);
+							}
+						}
+					}
+					var ifCondition = [attackPeriority >= defensePeriority && attackPeriority != 0, attackPeriority >= 1];
+					var elseCondition = [attackPeriority < defensePeriority, attackPeriority == 0 && defensePeriority > 0];
+					var randomCondition = Math.round(Math.random() * 1);
+					console.log(randomCondition);
+					if(ifCondition[1]) {
+						console.log("attack higher");
+						attackCell.innerHTML = "<img class='imgCard' src='" + pcIcon + "'>";
+					}
+					else if(elseCondition[1]){
+						console.log("defense Higher");
+						defenseCell.innerHTML = "<img class='imgCard' src='" + pcIcon + "'>";
+					}
+					else {
+						document.getElementsByClassName(emptyCells[0])[0].innerHTML = "<img class='imgCard' src='" + pcIcon + "'>";
+						playerTurn = username;
+						turn.innerHTML = playerTurn + " turn!";
+						turnNumber++;
+					}
+				}
+			}
+			win();
+		}
+		function win() {
+			var userWon = 0;
+			var oppoWon = 0;
+			var counter = 0;
+			for(var i = 0; i < winMethods.length; i++) {
+				userWon = 0;
+				oppoWon = 0;
+				for(var j = 0; j < winMethods[i].length; j++) {
+					var cell = document.getElementsByClassName(winMethods[i][j])[0];
+					if(cell.innerHTML.length == 0) {
+						counter++;
+					}
+					if(cell.innerHTML.length > 0 && imgType(cell) == userIcon) {
+						userWon++;
+						if(userWon == 3) {
+							turn.innerHTML = "Winner: " + "<img class='winCard2' src='" + userIcon + "'>";
+							document.getElementById("retro").innerHTML = "WINNER:";
+							document.getElementById("winnerText").innerHTML = "<img class='winCard' src='" + userIcon + "'>";
+							if(document.getElementById("winner")) {
+								document.getElementById("winner").setAttribute("id", "winner-won");
+							}
+							return true;
+						}
+					}
+					else if(cell.innerHTML.length > 0 && imgType(cell) == pcIcon){
+						oppoWon++;
+						if(oppoWon == 3) {
+							turn.innerHTML = "Winner: " + "<img class='winCard2' src='" + pcIcon + "'>";
+							document.getElementById("retro").innerHTML = "WINNER:";
+							document.getElementById("winnerText").innerHTML = "<img class='winCard' src='" + pcIcon + "'>";
+							if(document.getElementById("winner")) {
+								document.getElementById("winner").setAttribute("id", "winner-won");
+							}
+							return true;
+						}
+					}
+				}
+			}
+			if(counter == 0 && (oppoWon != 3 && userWon != 3)) {
+				turn.innerHTML = "Draw!";
+				document.getElementById("winnerText").innerHTML = "";
+				document.getElementById("retro").innerHTML = "DRAW!";
+				console.log("WTF");
+				if(document.getElementById("winner")) {
+					document.getElementById("winner").setAttribute("id", "winner-won");
+				}
+				return true;
+			}
+			return false;
+		}
+		function reset() {
+			board.innerHTML = '<tr><td class="cell c1" onclick="play(this)"></td><td class="cell c2" onclick="play(this)"></td><td class="cell c3" onclick="play(this)"></td></tr><tr><td class="cell c4" onclick="play(this)"></td><td class="cell c5" onclick="play(this)"></td><td class="cell c6" onclick="play(this)"></td></tr><tr><td class="cell c7" onclick="play(this)"></td><td class="cell c8" onclick="play(this)"></td><td class="cell c9" onclick="play(this)"></td></tr>';
+			if(document.getElementById("winner-won")) {
+				document.getElementById("winner-won").setAttribute("id", "winner");
+			}
+			document.getElementById("winnerText").innerHTML = "";
+			generateBasicData();
+		}
+	</script>
+</body>
+</html>

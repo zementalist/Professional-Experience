@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game</title>
+</head>
+<body id="body">
+	<h4>All faces are identical, except one face .. WHICH ONE!</h4>
+<div style="border-left: 1px solid black; position: absolute; left: 700px; padding-bottom: 600px;"></div>
+<script type="text/javascript">
+    var counter = 0;
+	var width_left = 600;
+	var width_right = 1250;
+	var height = 500;
+	var posY;
+	var posX;
+	var leftSmiles = [];
+	var rightSmiles = [];
+	var body = document.getElementById('body');
+	var l = 5;
+	var r = 6;
+	function leftSmile() {
+		imgLeft = document.createElement("img");
+		var smile = body.appendChild(imgLeft);
+		leftSmiles.push(imgLeft);
+		imgLeft.setAttribute("src", "smile.png");
+		posX = Math.floor(Math.random() * width_left);
+		posY = Math.floor(Math.random() * height);
+		imgLeft.setAttribute("style", "position: absolute; top: "+String(posY)+"px; left: "+String(posX)+"px;");
+	}
+	function rightSmile() {
+		imgRight = document.createElement("img");
+		var smile = body.appendChild(imgRight);
+		rightSmiles.push(imgRight);
+		imgRight.setAttribute("src", "smile.png");
+		if (posY && posX) {
+		imgRight.setAttribute("style", "position: absolute; top: "+String(posY)+"px; left: "+String(posX + 700)+"px;");
+	}
+	}
+	function motor() {
+		var posx = Math.floor(Math.random() * width_right);
+		var posy = Math.floor(Math.random() * height);
+		for (i = 1; i <= l; i++) {
+			leftSmile();
+			rightSmile();
+		}
+		rightSmile();
+		rightSmiles[rightSmiles.length-1].setAttribute("style" , "position: absolute; top: "+String(posy)+"px; left: "+String(posx)+"px;")
+	}
+	function win() {
+		counter++
+		for (i = 0; i < leftSmiles.length; i++) {
+			leftSmiles[i].parentNode.removeChild(leftSmiles[i]);
+			rightSmiles[i].parentNode.removeChild(rightSmiles[i]);
+		}
+		rightSmiles[rightSmiles.length - 1].parentNode.removeChild(rightSmiles[rightSmiles.length - 1]);
+		rightSmiles = [];
+		leftSmiles = [];
+		l++;
+		motor();
+		gaming();
+	}
+	function gaming() {
+		rightSmiles[rightSmiles.length - 1].addEventListener('click', win);
+		for (var h = 0; h < (rightSmiles.length -2); h++) {
+			rightSmiles[h].addEventListener("click", function() { alert("wrong" + "\n you won: " + counter + " times!"); location.reload();});
+		}
+		for (var g = 0; g < leftSmiles.length; g++) {
+			leftSmiles[g].addEventListener("click", function() { alert("WRONG" + "\n you won: " + counter + " times!"); location.reload();});
+		}
+	}
+	motor();
+	gaming();
+</script>
+</body>
+</html>

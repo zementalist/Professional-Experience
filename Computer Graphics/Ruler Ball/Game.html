@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ruler</title>
+     <style type="text/css" rel="stylesheet">
+          canvas {
+               background-color: rgba(255, 255, 43, 0.7);
+               margin-left: 350px;
+               margin-top: 100px;
+          }
+     </style>
+</head>
+<body style="background-color: black;">
+     <canvas onclick="events()" onmousemove="position(event), updating()" id="canvas" width="500" height="500" style="border: 1px solid black; position: absolute;"></canvas>
+     <h1 style="color: darkred; position: absolute; border: 1px solid black; background-image: -webkit-linear-gradient(#E92C2C, #FFFF00); left: 20px; right: 30px; padding: 0px 470px 0px 500px;">Funny Games</h1>
+     <h1 style="position: absolute; left: 520px; top: 50px; color: purple;">Space Square</h1>
+     <a href="nowhere"> <img style="position: absolute; left: 20px; top: 130px; height: 400px; width: 300px;" src="C:\\Users\Zeyad-Pc\Desktop\Programming Questions\adv1.gif"></a>
+     <a href="noWhere"><img style="position: absolute; left: 900px; top: 120px; height: 400px; width: 300px;" src="C:\\Users\Zeyad-Pc\Desktop\Programming Questions\adv2.jpg"></a>
+     <div id="lost" style="color: purple; left: 380px; top: 300px; position: absolute; font-size: 80px;"></div>
+     <div id="start" style="position: absolute; left: 470px; top: 280px; color: purple; font-size: 50px;"><p id="sen">Click To Start<p></div>
+     <script type="text/javascript" src="jquery.min.js"></script>
+     <script type="text/javascript" src="gistfile1.js"></script>
+     <script type="text/javascript">
+     var position_x, lefte, righte, downe, upe;
+     var lista = [];
+     var one = 1;
+     	var myGame = {
+     		canvas : document.getElementById('canvas'),
+     		ctx : canvas.getContext("2d"),
+     		clear : function() {
+     			ctx.clearRect(0, 0, 500, 500);
+     		}
+     	}
+     	function position(event) {
+     		position_x = event.pageX - 350;
+     		position_y = event.pageY;
+     	}
+function events() {
+ var nume = 1;
+ if (document.getElementById('canvas').click && num === 1)
+  {moveball();
+  var parent = document.getElementById("start");
+var child = document.getElementById("sen");
+parent.removeChild(child);
+ num -= 1}
+}
+     	function ruler(width, height, x, y, color) {
+     		this.width = width
+     		this.height = height;
+     		this.x = x;
+     		this.y = y
+     		myGame.ctx.fillStyle = color;
+     		myGame.ctx.fillRect(this.x, this.y, this.width, this.height);
+               myGame.ctx.fillRect(this.x, this.y + 15, this.width + 30, this.height - 15);
+               myGame.ctx.fillRect(this.x - 30, this.y + 15, this.width - 30, this.height - 15);
+     		this.update = function() {
+     			myGame.ctx.clearRect(this.x + 1000, this.y, this.width + 1000, this.height );
+     			myGame.ctx.clearRect(this.x - 1000, this.y, this.width - 1000, this.height);
+     			myGame.ctx.clearRect(this.x + 1000, this.y, this.width - 1000, this.height);
+     			myGame.ctx.clearRect(this.x - 1000, this.y, this.width + 1000, this.height);
+     			myGame.ctx.fillStyle = color;
+     		     myGame.ctx.fillRect(this.x, this.y, this.width, this.height);
+                    myGame.ctx.fillRect(this.x, this.y + 15, this.width + 30, this.height - 15);
+                    myGame.ctx.fillRect(this.x - 30, this.y + 15, this.width - 30, this.height - 15);
+
+     		}
+     	}
+     	var rul = new ruler(100, 20, 200, 460, 'red');
+     	function updating() {
+     		pos = position_x - 55;
+     		rul.x = pos;
+     		rul.update();
+     	};
+     	function ball(width, height, x, y, color) {
+     		this.width = width;
+     		this.height = height;
+     		this.x = x;
+     		this.y = y;
+     		myGame.ctx.fillStyle = color;
+     		myGame.ctx.fillRect(this.x, this.y, this.width, this.height);
+     		this.update = function() {
+
+			myGame.ctx.clearRect(this.x + 3, this.y + 3, this.width + 3, this.height + 3);
+			myGame.ctx.clearRect(this.x - 3, this.y - 3, this.width - 3, this.height - 3);
+			myGame.ctx.clearRect(this.x + 3, this.y - 3, this.width + 3, this.height - 3);
+			myGame.ctx.clearRect(this.x - 3, this.y + 3, this.width - 3, this.height + 3);
+			myGame.ctx.clearRect(this.x + 3, this.y - 3, this.width - 3, this.height + 3);
+			myGame.ctx.clearRect(this.x - 3, this.y + 3, this.width + 3, this.height - 3);
+			myGame.ctx.clearRect(this.x + 3, this.y + 3, this.width - 3, this.height - 3);
+			myGame.ctx.clearRect(this.x - 3, this.y - 3, this.width + 3, this.height + 3);
+			myGame.ctx.clearRect(this.x, this.y, this.width, this.height);
+			myGame.ctx.fillStyle = color;
+			myGame.ctx.fillRect(this.x, this.y, this.width, this.height);
+               damage();
+     		}
+     	}
+     	var num = 0;
+     	var my_ball = new ball(10, 10, 250, 300, 'blue');
+     	function updateAll() {
+     		clearCircle(myGame.ctx, my_ball.x, my_ball.y, my_ball.rad);
+     		myGame.ctx.clearRect(0, 0, 500, 500);
+     		myGame.ctx.beginPath();
+			myGame.ctx.arc(my_ball.x, my_ball.y, my_ball.rad, 0, Math.PI * 2);
+			myGame.ctx.fillStyle = 'blue';
+			myGame.ctx.fill();
+			myGame.ctx.stroke();
+     		myGame.ctx.closePath();
+			rul = new ruler(rul.width, rul.height, rul.x, rul.y, 'red');
+			clear();
+			alert(lista.length);
+			lots();
+		}
+
+     	function components(x, y) {
+     		this.width = 30;
+     		this.height = 10;
+     		this.x = x;
+     		this.y = y;
+     		myGame.ctx.fillStyle = 'green';
+     		myGame.ctx.fillRect(this.x, this.y, this.width, this.height);
+     		this.crash = function() {
+     			myGame.ctx.clearRect(this.x, this.y, this.width, this.height);
+     		}
+     	}
+          var com_x = 20;
+          var com_x1 = 20;
+          var com_x2 = 20;
+          var com_x3 = 20;
+          var com_x4 = 20;
+          var com_y = 20;
+     	function lots() {
+     	var i = 0
+          for (i; i <= 60; i++) {
+               if (i <= 12) {
+               lista.push(new components(com_x, com_y));
+               com_x += 40;
+          }
+               if (com_x === 500 || (i <= 24 && i > 12)) {
+                    lista.push(new components(com_x1, com_y + 30));
+                    com_x1 += 40;
+
+               }
+               if (com_x1 === 500 || (i <= 36 && i > 24)) {
+                    lista.push(new components (com_x2, com_y + 60));
+                    com_x2 += 40;
+               }
+               if (com_x2 === 500 || (i <= 48  && i > 36)) {
+                    lista.push(new components(com_x3, com_y + 90));
+                    com_x3 += 40;
+               }
+               if (com_x3 === 500 || (i <= 60 && i > 48)) {
+                    lista.push(new components(com_x4, com_y + 120));
+                    com_x4 += 40;
+               }
+          }
+               }
+               lots();
+
+     	function moveball() {
+               if (my_ball.x > 250) {
+     		upe = setInterval(up, -50000);
+               righte = setInterval(right, 5);
+     	}
+          else {
+               upe = setInterval(up, 5);
+               lefte = setInterval(left, 5);
+          }
+     }
+     	function right() {
+     		if (my_ball.x >= 490) {
+     			lefte = setInterval(left, 5);
+     			clearInterval(righte);
+     		}
+     		else {
+     			my_ball.x += 1;
+     			my_ball.update();
+                    return true;
+     		}
+     	}
+     	var num = 1;
+     	function left() {
+     		if (my_ball.x <= 10) {
+     			righte = setInterval(right, 5);
+     			clearInterval(lefte);
+     		}
+     		else {
+     			my_ball.x -= 1;
+     			my_ball.update();
+                    return true;
+     		}
+     	}
+     	function up() {
+     		if (my_ball.y <= 10) {
+     			downe = setInterval(down, 5);
+     			clearInterval(upe);
+     		}
+          
+     		else {
+               for (var m in lista) {
+                    if (my_ball.x <= lista[m].x + 15 && my_ball.x >= lista[m].x - lista[m].width / 2) {
+                         if (my_ball.y <= lista[m].y + lista[m].height) {
+                                   downe = setInterval(down, 5);
+                                   clearInterval(upe);
+                                   lista[m].crash();
+                                   delete lista[m];
+                              }
+                         }
+                    }
+     			my_ball.y -= 1;
+     			my_ball.update();
+     		}
+     	}
+     	function down() {
+     		if (my_ball.y >= 450) {
+                    if (my_ball.x <= (rul.x + (rul.width / 2) + 40) && my_ball.x >= (rul.x - rul.width + 100)) {
+     			upe = setInterval(up, 5);
+     			clearInterval(downe);
+               }
+          }
+               if (my_ball.y >= rul.y + 10 && my_ball.y < 490) {
+                    if (my_ball.x <= (rul.x + 50 + 50 + 30) && my_ball.x >= (rul.x + 50 + 45)) {
+                         if (left()) {
+                         upe = setInterval(up, 5);
+                         righte = setInterval(right, 5);
+                         clearInterval(lefte);
+                         clearInterval(downe);
+                    }
+
+               }
+          }
+                    if (my_ball.y >= rul.y + 10 && my_ball.y < 490) {
+                    if (my_ball.x >= (rul.x - 30) && my_ball.x <= (rul.x - 15)) {
+                         if (right()) {
+                              upe = setInterval(up, 5);
+                              lefte = setInterval(left, 5);
+                              clearInterval(righte);
+                              clearInterval(downe);
+                         }
+
+                    }
+               }
+               
+               
+     			if (my_ball.y >= 490) {
+     			clearInterval(lefte);
+     			clearInterval(downe);
+     			clearInterval(upe);
+     			clearInterval(righte);
+     			document.getElementById("lost").innerHTML = "GAME OVER"
+     		}
+
+     		else {
+     			my_ball.y += 1;
+     			my_ball.update();
+     		     	}
+     	}
+          function damage() {
+               for (var m in lista) {
+                    if (my_ball.x <= lista[m].x + 15 && my_ball.x >= lista[m].x - lista[m].width / 2) {
+                         if (my_ball.y <= lista[m].y + lista[m].height) {
+                         return true;
+                    }
+               }
+               else {
+                    return false;
+               }
+          }
+     }
+     function win() {
+          if (lista.length === 0) {
+
+          }
+     }
+     </script>
+</body>
+</html>
