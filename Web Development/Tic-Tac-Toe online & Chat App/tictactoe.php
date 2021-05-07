@@ -457,7 +457,7 @@ session_start();
 					window.location = "login.php";
 				}
 			}
-			xhttp.open("GET", "names.php?logout=" + true + "&logmsg=" + "logged out successfuly");
+			xhttp.open("GET", "messages.php?logout=" + true + "&logmsg=" + "logged out successfuly");
 			xhttp.send();
 		}
 	</script>
