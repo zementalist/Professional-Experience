@@ -2,6 +2,11 @@
 
 Here are the games I've programmed using variant technologies and concepts such as Computer Graphics, and Algorithms.
 
+0- Process Scheduling Algorithms Visualization
+
+![bandicam-2021-05-08-16-37-03-051](https://user-images.githubusercontent.com/50156227/117543382-ddb2fd80-b01c-11eb-9480-06bb13ef2022.gif)
+
+
 1- Bouncy Ball
 
 ![ezgif com-gif-maker(1)](https://user-images.githubusercontent.com/50156227/117072950-887f9f00-ad31-11eb-89de-07cb54d43f28.gif)
