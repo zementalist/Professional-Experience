@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CPU Scheduling</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script type="text/javascript" src="progress-bar.js"></script>
+	<script src="TweenMax.min.js"></script>
+	<style>
+
+	.box {
+		border-right: 0px solid black;
+		border-left: 0px solid black;
+		text-align: center;
+		vertical-align: bottom;
+		font-size: 2rem;
+		font-weight: 900;
+		width: 0%;
+		border-radius: 114px;
+	}
+	.currentTime {
+		text-align: right;
+		font-size: 1.5rem;
+		font-weight: 900;
+	}
+	#arrivedProcess {
+		font-weight: 600;
+		font-size: 1.75rem;
+	}
+	td.process-data,th {
+		text-align: center;
+		font-weight: 700;
+	}
+	h2 {
+		text-align: center;
+	}
+	#avgData {
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>Round Robin</h2> <span> <a href="#">code</a> </span>
+		<br>
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-12 col-sm-12">
+				<div id="arrivedProcess">Arrived proccesses: </div>
+				<br>
+				<br>
+
+				<table class="table">
+					<tbody>
+						<tr id="processBar" style="border:none;"></tr>
+						<tr id="timestamp"></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-md-1 col-1 col-sm-1">
+
+			</div>
+			<div class="col-md-10 col-10 col-sm-10">
+				<table class="table table-striped results">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Burst Time</th>
+							<th>Arrival Time</th>
+							<th>Turnaround</th>
+							<th>Waiting TIme</th>
+						</tr>
+					</thead>
+					<tbody id="processData">
+						<tr></tr>
+					</tbody>
+				</table>
+				<div id="avgData">
+					<h3 id="avgTurnaround"></h3>
+					<h3 id="avgWaiting"></h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+
+		/*
+		p1 __4__ p1 __4__ p2 __4__ p3 __3__ p4 __4__ p1 __4__ p2 __2__ p4 __4__ p4
+		*/
+		let processBar = document.getElementById("processBar");
+		let arrivedProc = document.getElementById("arrivedProcess");
+		let timestamp = document.getElementById("timestamp");
+		let processTable = document.getElementById("processData");
+		let avgWaitingEl = document.getElementById("avgWaiting");
+		let avgTurnaroundEl = document.getElementById("avgTurnaround");
+		let drawInterval, drawDelay;
+		class Process {
+			constructor(title, burst, arrival) {
+				this.title = title;
+				this.burst = burst;
+				this.arrival = arrival;
+				this.turnaround = 0;
+				this.waiting = 0
+				this.burstAsConst = burst; // To calculate waitingTime = turnaround - burst
+			}
+		}
+		function addBox(title, width, interval, accumulateTime) {
+			let box = document.createElement("td");
+			let time = document.createElement("td");
+			box.innerHTML = title + "<br style='float:right;'>" + interval + "s";
+			box.setAttribute("class", "box");
+			box.style.width = width + "%";
+			box.style.background = "linear-gradient(120deg, #FFC0CB 0%, #fff 0%)";
+			time.setAttribute("class", "currentTime");
+			time.innerHTML = accumulateTime + interval + "s";
+			processBar.appendChild(box);
+			timestamp.appendChild(time);
+			let motion = new TweenMax(box, interval, {"background":"linear-gradient(90deg, rgba(63,94,251,1) 100%, rgba(252,70,107,1) 30%)"})
+			//motion.play();
+		}
+		function readFile(file) {
+			// function returning a promise includes the text in a file
+    	return new Promise(function (resolve, reject) {
+	        let fileRequest = new XMLHttpRequest();
+	        fileRequest.open("GET", file);
+	        fileRequest.onload = function () {
+	            if (this.readyState == 4 && this.status == 200) {
+	                resolve(fileRequest.responseText);
+	            }
+	        };
+	        fileRequest.send();
+    		});
+		}
+		let quantum = parseInt(prompt("Enter Quantum value: "));
+		let turns=0;
+		let totalBurst = 0;
+		async function parseFile(file, delimiter) {
+			// function taking the text of a file , parsing it, separating groups of data, return object of arrays of grouped data
+			let text = await readFile(file).then(function(result){return result;})
+			let lines = text.split('\n'); // array of lines of the text
+			let tokens = [];
+			for(let i = 0; i < lines.length; i++) {
+				let txt = lines[i].split(delimiter); // split every element by the delimiter
+				for(let j = 0; j < txt.length; j++) {
+					if(txt[j] != ""){ // we don't need empty elements
+						tokens.push(txt[j]);
+					}
+				}
+			}
+
+			let processTitles = tokens.filter(function(element) {
+				if(isNaN(element[0])) { // a process title starts with a letter
+					 return element;
+				}
+			})
+			let numberOfProccess = processTitles.length;
+			let burstTime = tokens.slice(numberOfProccess, numberOfProccess*2);
+			let arrivalTime = tokens.slice(numberOfProccess*2, numberOfProccess*3);
+			totalBurst = burstTime.reduce(function(total, sum) { return parseInt(total) + parseInt(sum)});
+			// Print a process when arrived
+			for(let i = 0; i < numberOfProccess; i++) {
+				setTimeout(function() {
+					let element = document.createElement("span");
+					element.innerHTML += (i == 0 ? "" : ",\t  ______  ") + processTitles[i] + " ("+ arrivalTime[i]+ "s)";
+					element.setAttribute("style", "font-size:1.75rem;font-weight:900;");
+					arrivedProcess.appendChild(element);
+				},parseInt(arrivalTime[i])*1000)
+			}
+			let Data = {
+				len:numberOfProccess,
+				titles:processTitles,
+				burst:burstTime,
+				arrival:arrivalTime
+			};
+
+			return Data;
+		}
+
+		function getProcesses(objectOfProcess) {
+			let arrayOfProcesses = [];
+			for(let i = 0; i < objectOfProcess.len; i++) {
+				// make process object and push it to arrayOfProcesses
+				let myProcess = new Process(objectOfProcess.titles[i], parseInt(objectOfProcess.burst[i]), parseInt(objectOfProcess.arrival[i]));
+				arrayOfProcesses.push(myProcess);
+			}
+			arrayOfProcesses.sort((a, b) => (a.arrival > b.arrival) ? 1 : -1) // sort by Arrival
+			return arrayOfProcesses;
+
+		}
+		let myObj = parseFile("RoundRobin.txt", "$");
+		let processes;
+		// processes = [process1, process2, process3, process4]
+		// start RR Algo
+		async function solve() {
+			let promiseOfProcesses = await myObj.then(function(result){return getProcesses(result)}).then(data => processes=data);
+			let currentTime = 0;
+			let finishedProcess = [];
+			let iterator = 0; // track which process is processing
+			let finished = false;
+
+			while(!finished) {
+				let currentIndex = iterator % processes.length;
+				let myProcess = processes[currentIndex];
+				let arrived = myProcess.arrival <= currentTime;
+				if(arrived) {
+					let needToProcess = myProcess.burst > 0;
+					if(needToProcess) {
+						let timeToWork = (myProcess.burst > quantum ? quantum : myProcess.burst);
+						let now = currentTime; // get a copy of the value
+						setTimeout(function(){
+							let width = (timeToWork / totalBurst) * 100;
+							addBox(myProcess.title, width, timeToWork, now);
+						},(now)*1000);
+						myProcess.burst -= timeToWork;
+						currentTime += timeToWork;
+
+						let processFinished = myProcess.burst == 0;
+						if(processFinished) {
+							myProcess.turnaround = currentTime - myProcess.arrival //  turnaround = finishTime - arrival
+							myProcess.waiting = myProcess.turnaround - myProcess.burstAsConst // waitingTime = turnaround - burst
+							finishedProcess.push(myProcess.title); // push process title to finished processes
+							finished = finishedProcess.length == processes.length; // if all processes are finished
+						}
+					}
+				}
+				iterator++;
+			}
+			// calculate : avg waiting, avg turnaround
+			let waitingTotal = 0,turnaroundTotal=0;
+			for(let i = 0; i < processes.length; i++) {
+				waitingTotal += processes[i].waiting;
+				turnaroundTotal += processes[i].turnaround;
+				recordProcess(processes[i]);
+			}
+			let avgWaiting = waitingTotal / processes.length;
+			let avgTurnaround = turnaroundTotal / processes.length;
+			avgWaitingEl.innerHTML = "Average waiting time = " + avgWaiting + "s"
+			avgTurnaroundEl.innerHTML = "Average turnaround time = " + avgTurnaround + "s";
+		}
+
+		function recordProcess(pr) {
+			// function to store data of a process into row in a table
+			let row = []; // row of [td ..]
+			let data = [pr.title, pr.burstAsConst, pr.arrival, pr.turnaround, pr.waiting];
+			let tr = document.createElement("tr");
+			for(let i = 0; i < 5; i++) {
+				// store table-data into row
+				let td = document.createElement("td");
+				td.setAttribute("class", "process-data");
+				row.push(td);
+			}
+			for(let i = 0; i < 5; i++) {
+				// enter data to table-data && append it in the row
+				row[i].innerHTML = data[i];
+				tr.appendChild(row[i]);
+			}
+			// append the row to table
+			processTable.appendChild(tr);
+		}
+		solve();
+	</script>
+</body>
+</html>
