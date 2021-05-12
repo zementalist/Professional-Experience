@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Gaming</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<style type="text/css">
+	  @media only screen and (max-width: 3000px) {
+		#frame {
+			width: 93.5%;
+			height: 50rem;
+			background-image: -webkit-linear-gradient(yellow, red);
+			margin-left: 33.39%;
+			margin-top: 12.021%;
+			position: relative;
+		}
+		b {
+			color: red;
+			border: 1px solid black
+		}
+		button, .waitButton {
+			display: inline;
+			position: relative;
+			margin-top: 40%;
+			width: 20%;
+			height: 10%;
+			margin-left: 22%;
+		    box-shadow: 0 5px #fff;
+		}
+		button:active {
+			box-shadow: 0 5px #666;
+			transform: translateY(4px);
+		}
+		.waitButton {
+			margin-top: 10%;
+		}
+		h2 {
+			text-align: center;
+			color: white;
+			font-weight: bold;
+			text-shadow: 3px 3px red;
+		}
+		h3 {
+              position: absolute;
+              top: 50%;
+              background-color: yellow;
+              border: 2px solid black;
+              left: 50%;
+              color: blue;
+              font-weight: bold;
+              font-style: italic;
+              margin: -70px 0 0 -190px;
+              text-shadow: 1px 1px black;
+		}
+
+		h4 {
+              margin-top: 25%;
+              text-align: center;
+              font-size: 2rem;
+              color: blue;
+              font-weight: bold;
+              font-style: italic;
+              text-shadow: 1px 1px black;	
+              background-color: yellow;
+              border: 1px solid black;
+		}
+		input {
+			margin-top: -15%;
+			text-align: center;
+		}
+	}
+      @media only screen and (max-width: 420px) {
+		#frame {
+			width: 100%;
+			height: 45rem;
+			background-image: -webkit-linear-gradient(yellow, red);
+			margin-left: 1.39%;
+			margin-top: 6.021%;
+			position: relative;
+		}
+		b {
+			color: red;
+			border: 1px solid black
+		}
+		button, .waitButton {
+			    display: inline;
+			    position: relative;
+			    margin-top: 70%;
+			    width: 25%;
+			    height: 10%;
+			    margin-left: 18%;
+		    }
+		.waitButton {
+			    margin-top: 30%;
+		    }
+		h2 {
+			text-align: center;
+			color: white;
+			font-weight: bold;
+			text-shadow: 3px 3px red;
+		}
+		h3 {
+              background-color: yellow;
+              border: 2px solid black;
+              color: blue;
+              font-size: 2.05rem;
+              font-weight: bold;
+              font-style: italic;
+              width: 100.5%;
+              margin: -11.37037037037037% 0 0 -50.45454545454545%;
+              text-shadow: 1px 1px black;
+		}
+
+		h4 {
+              margin-top: 25%;
+              text-align: center;
+              font-size: 1.8rem;
+              color: blue;
+              font-weight: bold;
+              font-style: italic;
+              text-shadow: 1px 1px black;	
+              background-color: yellow;
+              border: 1px solid black;
+		}
+		input {
+			margin-top: -30%;
+			text-align: center;
+		}
+	}
+       }
+	</style>
+</head>
+<body style="background-color: black;">
+	<div class="container">
+		<div class="all">
+			<section class="row">
+				<div class="col-md-8">
+					<div id="frame">
+						<h2>Guess The Number</h2>
+						<h3 id="whoPlays">Who is going to guess the number ?</h3>
+						<button onclick="computerGame()" class="btn btn-primary" id="computer">Computer</button>
+						<button onclick="playerGame()" class="btn btn-primary" id="player">Player</button>
+						<h4 class="wait" id="ChooseNumber">Choose a Number from 1 to 99 <br>* Notice that numbers from 1 to 9 are : 01 02 03 .. etc</h4>
+						<button id="done" class="btn btn-primary waitButton">Done</button>
+						<button id="even" class="btn btn-primary waitButton">Even</button>
+						<button id="enter" class="btn btn-primary waitButton">Enter</button>
+						<button id="odd" class="btn btn-primary waitButton">Odd</button>
+						<button id="two" class="btn btn-primary waitButton">2 (only)</button>
+						<button id="twothree" class="btn btn-primary waitButton">2 & 3</button>
+						<button id="yes" class="btn btn-primary waitButton">Yes</button>
+						<button id="no" class="btn btn-primary waitButton">No</button>
+						<button id="greater" class="btn btn-primary waitButton">Yes</button>
+						<button id="smaller" class="btn btn-primary waitButton">No</button>
+						<button id="equal" class="btn btn-primary waitButton">Yes, Greater or Equal</button>
+						<button id="playAgain" class="btn btn-primary waitButton" onclick="won()">Play Again</button>
+						<input  type="number" name="" class="form-control waitInput" id="totalDigits" placeholder="01 => 0 + 1 = 1">
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var computer = document.getElementById('computer');
+		var player = document.getElementById('player');
+		var computerGameIsOn = false;
+		var playerGameIsOn = false;
+		var letters = /^[A-Za-z]+$/;
+		var reg = new RegExp(/^[0-9]$/);
+		var computerNumber, userNumber, times;
+		var getUserNumber;
+		var input = document.getElementsByTagName('input');
+		var isEvenOrOdd, divisor, isNumberGreater, sumOfNums, message="Enter a number from 01 - 99 :";
+		var possibleNumbers = [];
+		var wannaPlay = false;
+		function sumDigits(x) {
+			if(x < 1) {
+				return 0;
+			}
+			else {
+				return parseInt((x % 10)) + sumDigits(x/10);
+			}
+		}
+		function swap(x) {
+			z = x / 10;
+			x = x % 10;
+			x = x + "" + z;
+			x = parseInt(x);
+			return x;
+		}
+		function checkInput(event) {
+			var key;
+			if(window.event) {
+				key = event.keyCode;
+			}
+			keypress = String.fromCharCode(key);
+			if(Number.isInteger(parseInt(keypress)) && parseInt(keypress) >= 0 && parseInt(keypress) < 100 || reg.test(keypress) || key == 229) {
+				return true;
+			}
+			else if(key == 13) {
+				document.getElementById('enter').click();
+			}
+			else if(key == 8) {
+				;
+			}
+			else if(key = 32) {
+				alert("Please enter an integer number");
+			}
+			else {
+				alert("Please enter an integer number");
+			}
+		}
+		for(var i = 0; i < input.length; i++) {
+			input[i].addEventListener("keydown", checkInput);
+		}
+		function won() {
+			$(".waitButton").hide();
+			$("#computer").show();
+			$("#player").show();
+			$("h3").show();
+			$("h4").hide();
+			document.getElementById('totalDigits').value = "";
+			document.getElementById('enter').removeEventListener("click", getUserNumber);
+			userNumber = 0;
+			computerNumber = 0;
+			times = 1;
+			isEvenOrOdd = "";
+			divisor = "";
+			isNumberGreater = "";
+			sumOfNums = 0;
+			possibleNumbers = [];
+			computerGameIsOn = false;
+			playerGameIsOn = false;
+		}
+		function elementsWaiting() {
+			$("#done").hide();
+			$(".wait").hide();
+			$(".waitButton").hide();
+			$(".waitInput").hide();
+		}
+		elementsWaiting();
+		function computerGame() {
+			computerGameIsOn = true;
+			document.getElementById('totalDigits').setAttribute("placeholder", "01 => 0 + 1 = 1");
+			$("button").hide();
+			$("h3").hide();
+			$(".wait").show();
+			$("#done").show();
+			document.getElementById('ChooseNumber').innerHTML = "Choose a Number from 1 to 99 <br>* Notice that numbers from 1 to 9 are : 01 02 03 .. etc";
+			document.getElementById('done').onclick = function() {
+				document.getElementById('ChooseNumber').innerHTML = "Is the number even or odd?"
+				$("#done").hide();
+				$("#even").show();
+				$("#odd").show();
+
+			}
+			document.getElementById('even').onclick = function() {
+				$("#even").hide();
+				$("#odd").hide();
+				isEvenOrOdd = 1;
+				document.getElementById('ChooseNumber').innerHTML = "What is the total sum of your number Digits ? <br>For Example: 23 => 2 + 3 = 5";
+				$("#totalDigits").show();
+				$("#enter").show();
+			}
+			document.getElementById('odd').onclick = function() {
+				$("#even").hide();
+				$("#odd").hide();
+				isEvenOrOdd = 2;
+				document.getElementById('ChooseNumber').innerHTML = "What is the total sum of your number Digits ? <br>For Example: 23 => 2 + 3 = 5";
+				$("#totalDigits").show();
+				$("#enter").show();
+			}
+			document.getElementById('enter').onclick = function() {
+				if($("#totalDigits").val().match(letters) || !Number.isInteger(Number($("#totalDigits").val())) || Number($("#totalDigits").val() > 18) && computerGameIsOn || $("#totalDigits").val().length == 0 || $("#totalDigits").val() == '0') {
+					alert("Enter an integer Number Only!")
+				}
+				else if(Number.isInteger(Number($("#totalDigits").val()))) {
+				sumOfNums = parseInt($("#totalDigits").val());
+			    
+				if(isEvenOrOdd == 1) {
+					divisor = (sumOfNums % 3 == 0 ? 2 : 1);
+				document.getElementById('ChooseNumber').innerHTML = "If you swap your number digits .. will it be <br> greater than your choosen number ? [EX: 01 => 10]";
+				$("input").hide();
+				$("#enter").hide();
+				$("#yes").show();
+				$("#no").show();
+			    }
+			else if (isEvenOrOdd == 2) {
+					divisor = (sumOfNums % 3 == 0 ? true : false);
+				if(divisor && computerGameIsOn) {
+				document.getElementById('ChooseNumber').innerHTML = "If you swap your number digits .. will it be <br> greater than your choosen number ? [EX: 01 => 10]";
+				$("input").hide();
+				$("#enter").hide();
+				$("#yes").show();
+				$("#no").show();
+			}
+			   else if(!divisor && computerGameIsOn) {
+				document.getElementById('ChooseNumber').innerHTML = "If you swap your number digits .. will it be <br> greater than <b>OR EQUAL</b> your choosen number ? [EX: 01 => 10]";
+				$("input").hide();
+				$("#enter").hide();
+				$("#yes").show();
+				$("#no").show();
+			   }
+		     }
+		   }
+			}
+			document.getElementById('yes').onclick = function() {
+				$("#yes").hide();
+				$("#no").hide();
+				isNumberGreater = true;
+				play();
+			}
+			document.getElementById('no').onclick = function() {
+				$("#yes").hide();
+				$("#no").hide();
+				isNumberGreater = false;
+				play();
+			}
+
+		}
+		function play() {
+				if(isEvenOrOdd == 1) {
+					if(divisor == 1) {
+						for(var i = 0; i < 100; i+=2) {
+							if(sumDigits(i) == sumOfNums && (i % 3 != 0) && (swap(i) > i == isNumberGreater)) {
+								possibleNumbers.push(i);
+							}
+						}
+						if(possibleNumbers.length == 0) {
+							document.getElementById('ChooseNumber').innerHTML = "Sorry, Something gone wrong! wanna play again ☺ ?";
+							if(wannaPlay) {
+								play();
+							}
+							else {
+								$("#playAgain").show();
+							}
+						}
+						if(possibleNumbers.length == 1) {
+							document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?";
+							if(wannaPlay) {
+								play();
+							}
+							else {
+								$("#playAgain").show();
+							}
+						}
+						else if(possibleNumbers.length == 2) {
+							document.getElementById('ChooseNumber').innerHTML = "Is your Number greater than [" + (possibleNumbers[0] + 5) + "]";
+							$("#greater").show();
+							$("#smaller").show();
+		        			document.getElementById('greater').onclick =  function() {
+				                $("#greater").hide();
+                				isNumberGreater = true;
+				                $("#smaller").hide();
+				                $("#equal").hide();
+							if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+							else {
+							    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?");
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+						}
+			         
+
+			                document.getElementById('smaller').onclick = function() {
+			             	$("#greater").hide();
+			             	isNumberGreater = false;
+				            $("#smaller").hide();
+				            $("#equal").hide();
+								if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+							else {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+							    else {
+								    $("#playAgain").show();
+							    }
+							}
+						
+
+			                }
+					}
+                        else if(possibleNumbers.length == 3) {
+                        	document.getElementById('ChooseNumber').innerHTML = "Is your Number greater than [" + (possibleNumbers[1] + 7) + "] ?";
+                        	$("#greater").show();
+                        	$("#smaller").show();
+                        	document.getElementById('greater').onclick = function() {
+                        		$("#greater").hide();
+                        		$("#smaller").hide();
+                        		isNumberGreater = true;
+                                if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[2] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+    							else {
+								    $("#playAgain").show();
+							    }
+							}
+                        	}
+                        	document.getElementById('smaller').onclick = function() {
+                        		$("#greater").hide();
+                        		$("#smaller").hide();
+                        		isNumberGreater = false;
+							if(!isNumberGreater) {
+								document.getElementById('ChooseNumber').innerHTML = ("I promise this is the last Question\nIs your Number greater than [" + (possibleNumbers[1] - 5) + "] ?");
+								$("#greater").show();
+								$("#smaller").show();
+								document.getElementById('greater').onclick = function() {
+									$("#greater").hide();
+									$("#smaller").hide();
+									isNumberGreater = true;
+		    					    if(isNumberGreater) {
+								    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?");
+							        if(wannaPlay) {
+							    	    play();
+							        }
+	    							else {
+								        $("#playAgain").show();
+							        }
+								}
+								}
+								document.getElementById('smaller').onclick = function() {
+									$("#smaller").hide();
+									$("#greater").hide();
+									isNumberGreater = false;
+									if(!isNumberGreater) {
+								    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?");
+							        if(wannaPlay) {
+							    	    play();
+							        }
+									else {
+								        $("#playAgain").show();
+							        }
+								}
+								}
+							}
+						}
+
+							}
+		    }
+					if(divisor == 2) {
+						for(var i = 1; i < 100; i++) {
+							if(sumDigits(i) == sumOfNums && i % 2 == 0 && i % 3 == 0 && (swap(i) > i == isNumberGreater)) {
+								possibleNumbers.push(i);
+							}
+						}
+						if(possibleNumbers.length == 0) {
+							document.getElementById('ChooseNumber').innerHTML = "Sorry, Something gone wrong! wanna play again ☺ ?";
+							if(wannaPlay) {
+								play();
+							}
+							else {
+								$("#playAgain").show();
+							}
+						}
+						if(possibleNumbers.length == 1) {
+							document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?";
+							if(wannaPlay) {
+								play();
+							}
+							else {
+								$("#playAgain").show();
+							}
+						}
+						else if(possibleNumbers.length == 2) {
+							document.getElementById('ChooseNumber').innerHTML = "Is your Number greater than [" + (possibleNumbers[0] + 5) + "]";
+							$("#greater").show();
+							$("#smaller").show();
+		        			document.getElementById('greater').onclick =  function() {
+				                $("#greater").hide();
+                				isNumberGreater = true;
+				                $("#smaller").hide();
+				                $("#equal").hide();
+							if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+							else {
+							    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?");
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+						}
+			         
+
+			                document.getElementById('smaller').onclick = function() {
+			             	$("#greater").hide();
+			             	isNumberGreater = false;
+				            $("#smaller").hide();
+				            $("#equal").hide();
+								if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+							else {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+							    else {
+								    $("#playAgain").show();
+							    }
+							}
+						
+
+			                }
+					}
+                        else if(possibleNumbers.length == 3) {
+                        	document.getElementById('ChooseNumber').innerHTML = "Is your Number greater than [" + (possibleNumbers[1] + 7) + "] ?";
+                        	$("#greater").show();
+                        	$("#smaller").show();
+                        	document.getElementById('greater').onclick = function() {
+                        		$("#greater").hide();
+                        		$("#smaller").hide();
+                        		isNumberGreater = true;
+                                if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[2] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+    							else {
+								    $("#playAgain").show();
+							    }
+							}
+                        	}
+                        	document.getElementById('smaller').onclick = function() {
+                        		$("#greater").hide();
+                        		$("#smaller").hide();
+                        		isNumberGreater = false;
+							if(!isNumberGreater) {
+								document.getElementById('ChooseNumber').innerHTML = ("I promise this is the last Question\nIs your Number greater than [" + (possibleNumbers[1] - 5) + "] ?");
+								$("#greater").show();
+								$("#smaller").show();
+								document.getElementById('greater').onclick = function() {
+									$("#greater").hide();
+									$("#smaller").hide();
+									isNumberGreater = true;
+		    					    if(isNumberGreater) {
+								    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?");
+							        if(wannaPlay) {
+							    	    play();
+							        }
+	    							else {
+								        $("#playAgain").show();
+							        }
+								}
+								}
+								document.getElementById('smaller').onclick = function() {
+									$("#smaller").hide();
+									$("#greater").hide();
+									isNumberGreater = false;
+									if(!isNumberGreater) {
+								    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?");
+							        if(wannaPlay) {
+							    	    play();
+							        }
+									else {
+								        $("#playAgain").show();
+							        }
+								}
+								}
+							}
+						}
+
+							}
+		    }
+		}
+		else if(isEvenOrOdd == 2) {
+				    divisor = (sumOfNums % 3 == 0 ? true : false);
+					if(divisor) {
+						for(var i = 3; i < 100; i+=3) {
+							if(sumDigits(i) == sumOfNums && (swap(i) > i == isNumberGreater) && i % 2 != 0) {
+								possibleNumbers.push(i);
+							}
+						}
+						if(possibleNumbers.length == 0) {
+							document.getElementById('ChooseNumber').innerHTML = "Sorry, Something gone wrong! wanna play again ☺ ?";
+							if(wannaPlay) {
+								play();
+							}
+							else {
+								$("#playAgain").show();
+							}
+						}
+						if(possibleNumbers.length == 1) {
+							document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?";
+							if(wannaPlay) {
+								play();
+							}
+							else {
+								$("#playAgain").show();
+							}
+						}
+						else if(possibleNumbers.length == 2) {
+							document.getElementById('ChooseNumber').innerHTML = "Is your Number greater than [" + (possibleNumbers[0] + 7) + "]";
+							$("#greater").show();
+							$("#smaller").show();
+		        			document.getElementById('greater').onclick =  function() {
+				                $("#greater").hide();
+                				isNumberGreater = true;
+				                $("#smaller").hide();
+				                $("#equal").hide();
+							if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+							else {
+							    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?");
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+						}
+			         
+
+			                document.getElementById('smaller').onclick = function() {
+			             	$("#greater").hide();
+			             	isNumberGreater = false;
+				            $("#smaller").hide();
+				            $("#equal").hide();
+								if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+							else {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+							    else {
+								    $("#playAgain").show();
+							    }
+							}
+						
+
+			                }
+					}
+                        else if(possibleNumbers.length == 3) {
+                        	document.getElementById('ChooseNumber').innerHTML = "Is your Number greater than [" + (possibleNumbers[1] + 7) + "] ?";
+                        	$("#greater").show();
+                        	$("#smaller").show();
+                        	document.getElementById('greater').onclick = function() {
+                        		$("#greater").hide();
+                        		$("#smaller").hide();
+                        		isNumberGreater = true;
+                                if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[2] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+    							else {
+								    $("#playAgain").show();
+							    }
+							}
+                        	}
+                        	document.getElementById('smaller').onclick = function() {
+                        		$("#greater").hide();
+                        		$("#smaller").hide();
+                        		isNumberGreater = false;
+							if(!isNumberGreater) {
+								document.getElementById('ChooseNumber').innerHTML = ("I promise this is the last Question\nIs your Number greater than [" + (possibleNumbers[1] - 5) + "] ?");
+								$("#greater").show();
+								$("#smaller").show();
+								document.getElementById('greater').onclick = function() {
+									$("#greater").hide();
+									$("#smaller").hide();
+									isNumberGreater = true;
+		    					    if(isNumberGreater) {
+								    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?");
+							        if(wannaPlay) {
+							    	    play();
+							        }
+	    							else {
+								        $("#playAgain").show();
+							        }
+								}
+								}
+								document.getElementById('smaller').onclick = function() {
+									$("#smaller").hide();
+									$("#greater").hide();
+									isNumberGreater = false;
+									if(!isNumberGreater) {
+								    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?");
+							        if(wannaPlay) {
+							    	    play();
+							        }
+									else {
+								        $("#playAgain").show();
+							        }
+								}
+								}
+							}
+						}
+
+							}
+                        }
+
+
+					if(!divisor) {
+						for(var i = 1; i < 100; i++) {
+							if((sumDigits(i) == sumOfNums) && (i % 2 != 0) && (i % 3 != 0) && (swap(i) >= i == isNumberGreater)) {
+								possibleNumbers.push(i);
+							}
+						}
+						if(possibleNumbers.length == 0) {
+							document.getElementById('ChooseNumber').innerHTML = "Sorry, Something gone wrong! wanna play again ☺ ?";
+							if(wannaPlay) {
+								play();
+							}
+							else {
+								$("#playAgain").show();
+							}
+						}
+						if(possibleNumbers.length == 1) {
+							document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?";
+							if(wannaPlay) {
+								play();
+							}
+							else {
+								$("#playAgain").show();
+							}
+						}
+						else if(possibleNumbers.length == 2) {
+							document.getElementById('ChooseNumber').innerHTML = "Is your Number greater than [" + (possibleNumbers[0] + 5) + "]";
+							$("#greater").show();
+							$("#smaller").show();
+		        			document.getElementById('greater').onclick =  function() {
+				                $("#greater").hide();
+                				isNumberGreater = true;
+				                $("#smaller").hide();
+				                $("#equal").hide();
+							if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+							else {
+							    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?");
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+						}
+			         
+
+			                document.getElementById('smaller').onclick = function() {
+			             	$("#greater").hide();
+			             	isNumberGreater = false;
+				            $("#smaller").hide();
+				            $("#equal").hide();
+								if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+								else {
+								    $("#playAgain").show();
+							    }
+							}
+							else {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+							    else {
+								    $("#playAgain").show();
+							    }
+							}
+						
+
+			                }
+					}
+                        else if(possibleNumbers.length == 3) {
+                        	document.getElementById('ChooseNumber').innerHTML = "Is your Number greater than [" + (possibleNumbers[1] + 7) + "] ?";
+                        	$("#greater").show();
+                        	$("#smaller").show();
+                        	document.getElementById('greater').onclick = function() {
+                        		$("#greater").hide();
+                        		$("#smaller").hide();
+                        		isNumberGreater = true;
+                                if(isNumberGreater) {
+							    document.getElementById('ChooseNumber').innerHTML = "You Chose the number: [" + possibleNumbers[2] + "] ^_^ .. Wanna play again ?";
+							    if(wannaPlay) {
+							    	play();
+							    }
+    							else {
+								    $("#playAgain").show();
+							    }
+							}
+                        	}
+                        	document.getElementById('smaller').onclick = function() {
+                        		$("#greater").hide();
+                        		$("#smaller").hide();
+                        		isNumberGreater = false;
+							if(!isNumberGreater) {
+								document.getElementById('ChooseNumber').innerHTML = ("I promise this is the last Question\nIs your Number greater than [" + (possibleNumbers[1] - 5) + "] ?");
+								$("#greater").show();
+								$("#smaller").show();
+								document.getElementById('greater').onclick = function() {
+									$("#greater").hide();
+									$("#smaller").hide();
+									isNumberGreater = true;
+		    					    if(isNumberGreater) {
+								    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[1] + "] ^_^ .. Wanna play again ?");
+							        if(wannaPlay) {
+							    	    play();
+							        }
+	    							else {
+								        $("#playAgain").show();
+							        }
+								}
+								}
+								document.getElementById('smaller').onclick = function() {
+									$("#smaller").hide();
+									$("#greater").hide();
+									isNumberGreater = false;
+									if(!isNumberGreater) {
+								    document.getElementById('ChooseNumber').innerHTML = ("You Chose the number: [" + possibleNumbers[0] + "] ^_^ .. Wanna play again ?");
+							        if(wannaPlay) {
+							    	    play();
+							        }
+									else {
+								        $("#playAgain").show();
+							        }
+								}
+								}
+							}
+						}
+
+							}
+
+		    }
+		}
+	}
+	function playerGame() {
+		playerGameIsOn = true;
+		document.getElementById('totalDigits').setAttribute("placeholder", "Guess a number!");
+		$("button").hide();
+		$("h3").hide();
+		computerNumber = Math.floor(Math.random() * 99) + 1;
+		$("input").show();
+		document.getElementById('ChooseNumber').innerHTML = "The computer has a number from 1 - 99 <br>Try to guess it";
+		$("#ChooseNumber").show();
+		times = 1;
+		$("#enter").show();
+		function getUserNumber() {
+			if(playerGameIsOn) {
+			    userNumber = parseInt($("input").val());
+			    if($("#totalDigits").val().length == 0 || parseInt($("#totalDigits").val()) < 0 || parseInt($("#totalDigits").val()) > 100) {
+			    	alert("Please enter an integer number fro 1 to 99");
+			    }
+			    else {
+			    	runLoop();
+			    }
+			    document.getElementById('totalDigits').value = "";
+			}
+		}
+		document.getElementById('enter').addEventListener("click", getUserNumber);
+		function runLoop() {
+    		do {
+			if (userNumber > computerNumber) {
+				document.getElementById('ChooseNumber').innerHTML = "Your number is GREATER than the computer's number <br>Try a smaller number!";
+				document.getElementById('enter').onclick = function() {
+					userNumber = parseInt($("input").val());
+				}
+				times++
+				break;
+			}
+			else if(userNumber < computerNumber) {
+				document.getElementById('ChooseNumber').innerHTML = "Your number is SMALLER than the computer's number <br>Try a greater number!";
+				document.getElementById('enter').onclick = function() {
+					userNumber = parseInt($("input").val());
+				}
+				times++
+				break;
+			}
+		} while(userNumber != computerNumber)
+		if(computerNumber == userNumber) {
+			$("input").hide();
+			$("#enter").hide();
+			$("#playAgain").show();
+			document.getElementById('ChooseNumber').innerHTML = "YOU WON! \nThe number was [" + computerNumber + "] and you have tried : " + times + " times";
+		}
+	}
+	}
+	</script>
+</body>
+</html>
