@@ -178,9 +178,9 @@ class tree {
 };
 
 int main() {
-	tree t;
-	t.insert(4);
-	t.insert(3);
+    tree t;
+    t.insert(4);
+    t.insert(3);
     t.insert(6);
     t.insert(1);
     t.insert(5);
