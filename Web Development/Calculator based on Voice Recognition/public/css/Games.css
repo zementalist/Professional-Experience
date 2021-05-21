@@ -1,0 +1,11 @@
+.gameImg {
+    width: 50%;
+    box-shadow: rgb(34, 34, 34) 0px 0px 10px 0px;
+}
+.gameTitle {
+    margin-top:5px;
+    font-weight: 900;
+}
+.gameObject {
+    cursor: pointer;
+}
