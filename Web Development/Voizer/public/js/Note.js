@@ -120,13 +120,13 @@ export class Note extends Component {
             }
         }
         else if(this.command.isNormal(this.currentMode) && this.user.isSaying("back", e.results[e.results.length-1][0].transcript)) {
-            window.location = "http://localhost:8000/";
+            window.location = "https://voizer.herokuapp.com/";
         }
         else if(this.command.isNormal(this.currentMode) && this.user.isSaying("games", e.results[e.results.length-1][0].transcript)) {
-            window.location = "http://localhost:8000/games";
+            window.location = "https://voizer.herokuapp.com/games";
         }
         else if(this.command.isNormal(this.currentMode) && this.user.isSaying("calculator", e.results[e.results.length-1][0].transcript)) {
-            window.location = "http://localhost:8000/calculator";
+            window.location = "https://voizer.herokuapp.com/calculator";
         }
 
             if(this.command.isText(this.currentMode)) {
@@ -152,11 +152,12 @@ export class Note extends Component {
                     this.oldText = textArea.textContent + " ";
                     speechRecognition.abort();
                     document.getElementById("userText").select();
-                    document.execthis.command("copy");
+                    document.execCommand("copy");
                     modeDocument.innerHTML = "Copied Successfully!";
                     modeDocument.style.fontWeight = 900;
+                    let that = this;
                     setTimeout(function() {
-                        modeDocument.innerHTML = this.currentMode[this.currentMode.length-1];
+                        modeDocument.innerHTML = that.currentMode[that.currentMode.length-1];
                     }, 3000)
                 }
                 else {

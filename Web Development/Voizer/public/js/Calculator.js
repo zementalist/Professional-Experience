@@ -15,7 +15,7 @@ export default class Calculator extends Component {
         this.transcriptArray = [];
         this.equationAfterFilter = "";
         this.transcriptedText = "";
-        this.operations = ["plus", "minus", "multiply", "divided by", "add", "substract", "divide", "to the power of", "square root of"];
+        this.operations = ["plus", "minus", "multiply", "divided by", "add", "subtract", "divide", "to the power of", "square root of"];
         this.operators = ["+", "-", "*", "/", "+", "-", "/", "^", "√"];
         this.arrayOfStringNumbers = ["one", "what", 'when', 'two', 'to', 'do', 'free', 'three', 'for', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'mine', 'ten', 'dim', 'then'];
         this.arrayOfIntegers = [1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8, 9, 9, 10, 10, 10];
@@ -24,6 +24,7 @@ export default class Calculator extends Component {
         // replace operators_as_words with operators_as_symbols
         text = text.replaceAll('x', '*');
         text = text.replaceAll('÷', '/');
+        text = text.toLowerCase();
         for(let i = 0; i < this.operators.length; i++) {
             text = text.replaceAll(this.operations[i], this.operators[i]);
         }
@@ -107,10 +108,10 @@ export default class Calculator extends Component {
             this.equationAfterFilter = "";
         }
         else if(this.user.isSaying("games", e.results[e.results.length-1][0].transcript)) {
-            window.location = "http://localhost:8000/games";
+            window.location = "https://voizer.herokuapp.com/games";
         }
         else if(this.user.isSaying("notes", e.results[e.results.length-1][0].transcript)) {
-            window.location = "http://localhost:8000/note";
+            window.location = "https://voizer.herokuapp.com/note";
         }
         else {
             this.transcriptedText = this.transcriptArray.join(" ");

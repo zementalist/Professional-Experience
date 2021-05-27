@@ -34,13 +34,13 @@ export default class Game extends Component {
         }
         else if(this.user.isSaying("back", e.results[e.results.length-1][0].transcript)) {
             speechRecognition.abort();
-            window.location = "http://localhost:8000/";
+            window.location = "https://voizer.herokuapp.com/";
         }
         else if(this.user.isSaying("notes", e.results[e.results.length-1][0].transcript)) {
-            window.location = "http://localhost:8000/notes";
+            window.location = "https://voizer.herokuapp.com/notes";
         }
         else if(this.user.isSaying("calculator", e.results[e.results.length-1][0].transcript)) {
-            window.location = "http://localhost:8000/calculator";
+            window.location = "https://voizer.herokuapp.com/calculator";
         }
     }
 }

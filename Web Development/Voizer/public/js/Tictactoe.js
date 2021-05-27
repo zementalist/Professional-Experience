@@ -29,13 +29,13 @@ export default class Tictactoe extends Component {
             speechRecognition.abort();
         }
         else if(this.user.isSaying("games", e.results[e.results.length-1][0].transcript)) {
-            window.location = "http://localhost:8000/games";
+            window.location = "https://voizer.herokuapp.com/games";
         }
         else if(this.user.isSaying("notes", e.results[e.results.length-1][0].transcript)) {
-            window.location = "http://localhost:8000/note";
+            window.location = "https://voizer.herokuapp.com/note";
         }
         else if(this.user.isSaying("calculator", e.results[e.results.length-1][0].transcript)) {
-            window.location = "http://localhost:8000/calculator";
+            window.location = "https://voizer.herokuapp.com/calculator";
         }
     }
 }
