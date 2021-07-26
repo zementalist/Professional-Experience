@@ -3,7 +3,7 @@
 * Upload any file & get a shareable link
 * No registration needed
 * Files are auto-deleted after 4 or 24 hours (changable)
-* Files can be using a secure code (password)
+* Files can be deleted using a secure code (password)
 * Report files
 * Messaging service
 * Admin Panel
