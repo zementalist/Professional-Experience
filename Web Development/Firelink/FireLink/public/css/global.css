@@ -1,0 +1,59 @@
+html, body {
+    z-index: 999;
+    padding:0;
+    margin:0;
+    overflow: hidden;
+    min-height: 100%;
+    position: relative;
+}
+html {
+    overflow-y: visible;
+}
+.navbar {
+    position: relative;
+    width: 100%;
+    z-index: 50;
+}
+.session-message {
+    text-align: center;margin: 0;width:100%;
+}
+.nav-link {
+    font-size: 1.1rem;
+}
+
+label {
+    margin-top: 1.2rem;
+}
+#website-logo {
+    font-size: 2rem;
+}
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.footer {
+    background-color: #222;
+    position: absolute;
+    bottom: 0;
+    z-index: 999;
+    width: 100%;
+    height: 35px; /* Set the fixed height of the footer here */
+}
+#footerText {
+    color:white;
+    font-size: 1.5vw;
+    text-align: center;
+    font-weight: 100;
+}
+#contactMotto {
+    font-family: 'Acme', sans-serif;
+    font-size: 40px;
+}
+@media screen and (max-width: 575px) {
+    #footerText {
+        font-size: 1rem;
+    }
+    .footer {
+        height: 25px;
+    }
+}

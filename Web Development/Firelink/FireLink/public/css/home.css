@@ -1,0 +1,108 @@
+.image-container {
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a77d5', endColorstr='#539fe1',GradientType=1 );
+    position: absolute;
+    z-index: 49;
+}
+.background-infrastructure {
+    background: rgb(10,119,213);
+    background: -moz-linear-gradient(left, rgba(10,119,213,1) 25vw, rgba(10,119,213,1) 25vw, rgba(115,177,231,1) 35vw, rgba(83,159,225,1) 79%);
+    background: -webkit-linear-gradient(left, rgba(10,119,213,1) 25vw,rgba(10,119,213,1) 25vw,rgba(115,177,231,1) 35vw,rgba(83,159,225,1) 79%);
+    background: linear-gradient(to right, rgba(10,119,213,1) 25vw,rgba(10,119,213,1) 25vw,rgba(115,177,231,1) 35vw,rgba(83,159,225,1) 79%);
+    width: 100%;
+    height: 105vh;
+    position: relative;
+    z-index: 48;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 20px 0px #444;
+}
+.component-infrastructure {
+    width: 100%;
+    background: #dedede;
+    padding: 20px 0px 40px 4vw;
+    position: relative;
+    z-index: 47;
+}
+.motto-container {
+    width: 100%;
+    text-align: center;
+    margin-top:-30px;
+}
+.motto {
+    position: relative;
+    font-size: 4rem;
+    text-align: center;
+    color: white;
+    font-family: 'Baloo Thambi', cursive;
+}
+#img1 {
+    width: 27vw;
+    text-align: center;
+    align-self: center;
+}
+
+h4 {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.up-btn {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #fff;
+    display: inline-block;
+    width: 100%;
+    padding: 15px 30px;
+    border-radius: 40px;
+    color: #292929;
+    font-weight: 700;
+    -webkit-box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+@media screen and (max-width:575px) {
+    #img1 {
+        margin-left: 0rem;
+        text-align: center;
+        align-self: center;
+        justify-self: center;
+        width: 100%;
+        height: 250px;
+    }
+    .motto {
+        font-size: 10vw;
+        margin-top: 2vw;
+        position: relative;
+    }
+    .ground {
+        align-content: center;
+        text-align: center;
+    }
+    .background-infrastructure {
+        height: 120vh;
+    }
+    .up-btn {
+        margin-top:auto;
+    }
+}
+
+@media screen and (min-width:598px) and (max-width:936px) {
+    .background-infrastructure {
+        height: 120vh;
+    }
+}
+@media screen and (max-width:597px) {
+    .background-infrastructure {
+        height: 120vh;
+    }
+}
+@media screen and (max-width:767px) {
+    .up-btn {
+        font-size: 150%;
+    }
+}

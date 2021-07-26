@@ -1,0 +1,92 @@
+
+body {
+    min-height: 100%;
+}
+.process {
+    margin-top:30px;
+    padding-bottom: 50px;
+    min-height: 100%;
+}
+.process-container {
+    padding: 10px;
+}
+.up-btn-container {
+    text-align:center;
+}
+.loader-container  {
+    text-align: center;
+}
+.loader {
+    text-align: center;
+    border: 1px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 0.9vw solid #3498db;
+    width: 3vw;
+    height: 3vw;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+input{
+    margin-top: 1rem;
+}
+label {
+    margin-top: 1.5rem;
+}
+
+#drop-cover {
+    display: none;
+    position: absolute;
+    width: 150vw;
+    height: 150vh;
+    z-index: 999;
+    background: rgba(100, 100, 100, 0.5);
+    top: -60vh;
+    left: -40vw;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 75vh;
+    font-size: 5vw;
+    border: 3px dotted black;
+}
+.progress-container {
+    display: none;
+    padding: 4px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar {
+    text-align: center;
+    width: 0%;
+    height: 16px;
+    border-radius: 4px;
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+    -webkit-transition: 0.4s linear;
+    -moz-transition: 0.4s linear;
+    -o-transition: 0.4s linear;
+    transition: 0.4s linear;
+    -webkit-transition-property: width, background-color;
+    -moz-transition-property: width, background-color;
+    -o-transition-property: width, background-color;
+    transition-property: width, background-color;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+}
