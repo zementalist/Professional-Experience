@@ -1,4 +1,4 @@
-# Smart Voice Calculator
+# Smart Voice Note-Taking App
 Smart note-taking app based on speech-recognition </br>
 Demo: https://voizer.herokuapp.com/note  </br>
 
