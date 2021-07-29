@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md bg-light navbar-light sticky-top custom-navbar">
+        <div class="container-fluid">
+            <a href="#home" class="navbar-brand"><img src="images\logo.png" class="pt-2 logo-img" height="49" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="myNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#team" class="nav-link">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--- Image Slider -->
+    <div id="slides" class="carousel slide" data-ride="carousel">
+
+        <ul class="carousel-indicators">
+            <li data-target="#slides" data-slide-to="0" class="active"></li>
+            <li data-target="#slides" data-slide-to="1"></li>
+            <li data-target="#slides" data-slide-to="2"></li>
+        </ul>
+        <div class="carousel-inner" id="home">
+            <!-- <span class="float-right align-self-middle" style="z-index:9999;"><i class=" fas fa-arrow-circle-right"></i></span> -->
+            <div class="carousel-item active">
+                <img src="images\bg1.jpg">
+                <div class="carousel-caption">
+                    <h1 class="display-2">PickyBuy</h1>
+                    <h3>Online Marketing</h3>
+                    <button class="btn btn-lg btn-light">View Demo</button>
+                    <button class="btn btn-primary btn-lg btn-carousel">Get Started</button>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="images\bg2.jpg" class="img-fluid">
+
+            </div>
+
+            <div class="carousel-item">
+                <img src="images\bg3.jpg" class="img-fluid">
+            </div>
+
+            <button class="carousel-control-prev border-0" href="#slides" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </button>
+            <button class="carousel-control-next border-0" href="#slides" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!--- Jumbotron -->
+    <div class="container-fluid">
+        <div class="row jumbotron">
+            <div class="col-xs-12 col-md-9 col-xl-10">
+                <p class="lead">Online marketing is the component that utilizes internet and online based digital
+                    technologies such as desktop computers, mobile phones and other digital media and platforms to
+                    promote products and services</p>
+            </div>
+            <div class="col-xs-12 col-md-3 col-xl-2">
+                <a> <button type="button" class="btn btn-outline-secondary font-weight-bold">Online Marketing</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--- Welcome Section -->
+    <div class="container-fluid py-3 " id="about">
+        <div class="row text-center py-2">
+            <div class="col-12 ">
+                <h1 class="display-4 wow animate__animated animate__lightSpeedInLeft">Professionals of Marketing</h1>
+            </div>
+            <div class="col-12">
+                <p class="lead">Online marketing is the component that utilizes internet and online based digital technologies such as desktop computers, mobile phones and other digital media and platforms to promote products and services</p>
+            </div>
+        </div>
+        <hr class="my-4">
+    </div>
+
+    <!--- Three Column Section -->
+    <div class="container-fluid py-3">
+        <div class="row py-2 text-center">
+
+            <div class="col-xs-12 col-sm-6 col-md-4 wow animate__animated animate__fadeInLeft">
+                <i class="fas fa-globe icon"></i>
+                <h3>Global</h3>
+                <p>Our marketing targets +72 countries!</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 wow animate__animated animate__fadeInUp">
+                <i class="far fa-handshake icon"></i>
+                <h3>Trusted</h3>
+                <p>Our partnership can be totally trusted.</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 wow animate__animated animate__fadeInRight">
+                <i class="far fa-clock icon"></i>
+                <h3>Timing</h3>
+                <p>Time is our first priority.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!--- Two Column Section -->
+    <div class="container-fluid py-4">
+        <div class="row">
+
+            <div class="col-lg-6 order-2">
+                <p>Marketing refers to activities a company undertakes to promote the buying or selling of a product or service. Marketing includes advertising, selling, and delivering products to consumers or other businesses. </p>
+                <p>Professionals who work in a corporation's marketing and promotion departments seek to get the attention of key potential audiences through advertising. </p>
+                <p>Marketing seeks to take a product or service, identify its ideal customers, and draw the customers' attention to the product or service available.</p>
+                <div class="text-center">
+                    <a class="btn btn-primary text-white my-2">Learn More</a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 text-center order-1">
+                <img src="images/cust-agent.jpg" class="img-fluid wow animate__animated animate__fadeInLeft">
+            </div>
+        </div>
+    </div>
+    <hr class="mt-5">
+
+    <!-- Services Section -->
+    <div class="container-fluid" id="services">
+        <div class="row text-center">
+
+            <div class="col-12 py-5">
+                <h1 class="display-4 wow animate__animated animate__lightSpeedInRight">Services</h1>
+            </div>
+
+            <div class="col-sm-6 col-md-3 wow animate__animated animate__fadeInLeft">
+                <div class="card align-items-center my-2 bg-purple text-white">
+                    <i class="fas fa-ad icon icon-service"></i>
+                    <div class="card-body">
+                        <hr class="my-2">
+                        <h4 class="card-title">Online Advertising</h4>
+                        <hr class="my-2">
+                        <a href="#" class="btn btn-outline-light">Discover</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-6 col-md-3 wow animate__animated animate__fadeInUp">
+                <div class="card align-items-center my-2 shadow bg-white rounded">
+                    <i class="fab fa-magento icon icon-service"></i>
+                    <div class="card-body">
+                        <hr class="my-2">
+                        <h4 class="card-title">Internet Marketing</h4>
+                        <hr class="my-2">
+                        <a href="#" class="btn btn-outline-dark">Discover</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+                <div class="card align-items-center my-2 wow animate__animated animate__fadeInUp">
+                    <i class="fas fa-chalkboard-teacher icon icon-service"></i>
+                    <div class="card-body">
+                        <hr class="my-2">
+                        <h4 class="card-title">Content Marketing</h4>
+                        <hr class="my-2">
+                        <a href="#" class="btn btn-outline-dark">Discover</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-6 col-md-3 mb-5 wow animate__animated animate__fadeInRight">
+                <div class="card align-items-center my-2 bg-purple text-white">
+                    <i class="fas fa-poll icon icon-service"></i>
+                    <div class="card-body">
+                        <hr class="my-2">
+                        <h4 class="card-title">Diversity Marketing</h4>
+                        <hr class="my-2">
+                        <a href="#" class="btn btn-outline-light">Discover</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--- Fixed background -->
+    <div class="container-fluid fixed-container">
+        <div class="row">
+            <div class="col-12 p-0">
+                <figure>
+                    <div class="fixed-wrap">
+                        <div id="fixed"></div>
+                    </div>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+
+    <!--- Partners Section -->
+    <button class="btn btn-outline-secondary btn-block" data-toggle="collapse" data-target=".partners">Top Partners?</button>
+    
+    <div class="partners collapse">
+        <div class="container-fluid">
+            <div class="row text-center">
+
+                <div class="col-sm-4 my-3">
+                    <img src="images/partner1.png" class="img-fluid partner-img">
+                </div>
+
+                <div class="col-sm-4 my-3">
+                    <img src="images/partner2.png" class="img-fluid partner-img">
+                </div>
+
+                <div class="col-sm-4 my-3">
+                    <img src="images/partner3.png" class="img-fluid partner-img">
+                </div>
+
+            </div>
+        </div>
+        <hr class="my-3">
+    </div>
+
+    <!--- Meet the team -->
+    <div class="container-fluid py-5" id="team">
+        <div class="row py-2">
+            <div class="col-12 text-center">
+                <h1 class="display-4 wow animate__animated animate__lightSpeedInLeft">Meet the Team</h1>
+            </div>
+        </div>
+    </div>
+
+    <!--- Cards -->
+    <div class="container-fluid py-2 teams">
+        <div class="row py-2">
+
+            <div class="col-sm-6 col-md-4 wow animate__animated animate__fadeInUp" data-wow-duration="1.5s">
+                <div class="card">
+                    <img src="images/team1.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">John Doe is someone whose name can't legally be used, or who simply doesn't want it used. In the case of a man, you'd call him John Doe</p>
+                        <a class="btn btn-outline-primary">See Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 wow animate__animated animate__fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">
+                <div class="card">
+                    <img src="images/team2.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title">Jane Doe</h4>
+                        <p class="card-text">Jane Doe is someone whose name can't legally be used, or who simply doesn't want it used. In the case of a woman, you'd call her Jane Doe</p>
+                        <a class="btn btn-outline-primary">See Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 wow animate__animated animate__fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
+                <div class="card">
+                    <img src="images/team3.png" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title">Another Doe</h4>
+                        <p class="card-text">Another Doe is someone whose name can't legally be used, In the case of an unknown gender, you'd call it Another Doe</p>
+                        <a class="btn btn-outline-primary">See Profile</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr class="my-5">
+
+
+    <!--- Two Column Section -->
+    <div class="container-fluid">
+        <div class="row py-2">
+            <div class="col-12 text-center py-4">
+                <h1 class="display-4 wow animate__animated animate__lightSpeedInRight">Our Philosophy</h1>
+            </div>
+            <div class="col-lg-6 order-2">
+                <p>The goal is to get down to business, get work done, and achieve results. This is often a competitive environment, even among coworkers. The purpose of being at work in a company with this type of culture is to make as much profit and capture as much market share as possible </p>
+                <p>It is a shared set of principles and joint sense of purpose that propel the organization forward. A real mission is central to a strong corporate culture, creating a feeling of community and giving people clear guidelines as to what is expected of them.</p>
+            </div>
+
+            <div class="col-lg-6 order-1 text-center wow animate__animated animate__fadeInLeft">
+                <img src="images/Marketing-Plan.jpg" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <hr class="my-3 mb-4">
+
+
+    <!--- Connect -->
+    <div class="container-fluid" id="contact">
+        <div class="row py-3 text-center">
+            <div class="col-12">
+                <h1 class="display-4 wow animate__animated animate__lightSpeedInLeft">Contact</h1>
+                <br>
+            </div>
+            <div class="col-12">
+                <a href=""><i class="fab fa-facebook wow animate__animated animate__bounceInLeft icon icon-contact"></i></a>
+                <a href=""><i class="fab fa-twitter wow animate__animated animate__fadeInBottomLeft icon icon-contact"></i></a>
+                <a href=""><i class="fab wow animate__animated animate__bounceInUp fa-google-plus-g icon icon-contact"></i></a>
+                <a href=""><i class="fab wow animate__animated animate__fadeInBottomRight fa-instagram icon icon-contact"></i></a>
+                <a href=""><i class="fab wow animate__animated animate__bounceInRight fa-youtube icon icon-contact"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!--- Footer -->
+    <footer>
+        <div class="container-fluid py-3 footer-container">
+            <div class="row py-4 footer-row bg-custom-dark text-white text-center">
+
+                <div class="col-md-4">
+                    <img src="images/logo.png" class="footer-logo-img">
+                    <hr class="light">
+                    <p>333-222-444</p>
+                    <p>marketing-agent@company.com</p>
+                    <p>321 Street Name</p>
+                    <p>City, State 12345</p>
+                </div>
+
+                <div class="col-md-4">
+                    <hr class="light">
+                    <h5>Our Hours</h5>
+                    <hr class="light">
+                    <p>Monday: 9am-5pm</p>
+                    <p>Tuesday: 9am-5pm</p>
+                    <p>Wednesday: 9am-5pm</p>
+                    <p>Thursday: 9am-5pm</p>
+                    <p>Friday: 9am-3pm</p>
+                </div>
+    
+                <div class="col-md-4">
+                    <hr class="light">
+                    <h5>Service Area</h5>
+                    <hr class="light">
+                    <p>City, State 12345</p>
+                    <p>City, State 54321</p>
+                    <p>City, State 12543</p>
+                    <p>City, State 54312</p>
+                </div>
+
+                <div class="col-12">
+                    <h6>All rights reserved ©PickyBuy 2030</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="js\popper.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js\all.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js\wow.min.js"></script>
+
+    <script type="text/javascript">
+       $(document).ready(function(){
+           // Initiate WoW JS
+          new WOW().init();
+
+          // Start carousel sliding
+          $('.carousel').carousel({
+            interval: 3000
+          })
+
+          // Navbar items: class "active" onclick functionality
+          $(".nav-link").on("click", function(){
+            $(".navbar-nav").find(".active").removeClass("active");
+            $(this).parent().addClass("active");
+            console.log($(this))
+          });
+
+        });
+
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+      </script>
+      
+</body>
+</html>
