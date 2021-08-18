@@ -1,5 +1,5 @@
 # Basic Implementation Environment for Machine Learning Projects
-<h4>Implementation of popular Machine Learning algorithms and Feature Engineering techniques <b>(using Scikit-Learn)</b></h4>
+<h4>Implementation of +20 popular Machine Learning algorithms and Feature Engineering techniques <b>(using Scikit-Learn)</b></h4>
 
 <h2>Algorithms Included:</h2>
 
