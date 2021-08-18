@@ -51,3 +51,16 @@
   <li>Linear Discriminant Analysis</li>
 </ul>
 <br><br>
+
+
+
+<h2>Methodology used for building models:</h2>
+<ol>
+  <li>Import dataset</li>
+  <li>Preprocessing</li>
+  <li>Training</li>
+  <li>Testing</li>
+  <li>Visualization</li>
+  <li>Save & Use</li>
+</ol>
+<br>
