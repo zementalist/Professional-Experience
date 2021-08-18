@@ -11,7 +11,7 @@
   <li>Decision Tree</li>
   <li>Random Forest</li>
 </ul>
-<br><br>
+<br>
 
 <h4>Classification</h4>
 <ul>
@@ -22,7 +22,7 @@
   <li>Decision Tree</li>
   <li>Random Forest</li>
 </ul>
-<br><br>
+<br>
 
 <h4>Clustering</h4>
 <ul>
@@ -43,7 +43,6 @@
   <li>Apriori</li>
 </ul>
 <br>
-
 
 <h4>Feature Engineering</h4>
 <ul>
