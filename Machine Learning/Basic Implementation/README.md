@@ -46,7 +46,7 @@
 
 <h4>Feature Engineering</h4>
 <ul>
-  <li>Feature Engineering Techniques</li>
+  <li>Popular Feature Engineering Techniques</li>
   <li>Principle Component Analysis</li>
   <li>Linear Discriminant Analysis</li>
 </ul>
