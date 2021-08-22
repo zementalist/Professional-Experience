@@ -5,5 +5,5 @@
   <li>Positive</li>
   <li>Negative</li>
 </ul>
-<span><h5>Model:</h5> </span><span><h4>Naive Bayes</h4></span>
-<h5>Accuracy: Improved from 73% to <strong>80%</strong></h5> (most implementations that use this data set -> score 73% accuracy)
+<h4>Model: Naive Bayes</h4>
+<h4>Accuracy: Improved from 73% to <strong>80%</strong></h4> (most implementations that use this data set -> score 73% accuracy)
