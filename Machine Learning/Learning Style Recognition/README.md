@@ -1,7 +1,7 @@
 # Learning Style Recognition
-<h4>Learning Styles: Visual, Auditory, Kinesthetic</h4>
-<h5>A learning style is the way that different students learn. A style of learning refers to an individual’s preferred way to absorb, process, comprehend and retain information.</h5>
-<h5>You can identify someone's learning style by focusing on the words used through a conversation or text chat</h5>
+<h3>Learning Styles: Visual, Auditory, Kinesthetic</h3>
+<h4>A learning style is the way that different students learn. A style of learning refers to an individual’s preferred way to absorb, process, comprehend and retain information.</h4>
+<h4>You can identify someone's learning style by focusing on the words used through a conversation or text chat</h4>
 <h5>Classes: </h5>
 <ol>
   <li>Visual</li>
