@@ -1,0 +1,10 @@
+{% extends 'posts/layout.html' %}
+{% block content %}
+    <div class="card">
+        <ul>
+            {% for post in posts %}
+            <li> <a href="/posts/{{post.id}}">{{post.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

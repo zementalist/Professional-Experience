@@ -1,0 +1,27 @@
+{% extends 'auth2/layout.html' %}
+
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        {% for field in form %}
+        {% if field.errors %}
+        <div class="alert alert-danger">
+            {{field.errors.0}}
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class="auth-form">
+            <form action="register" method="POST">
+                {% csrf_token %}
+                <h2 class="text-center">Sign Up</h2>
+                <br>
+                {{ form.as_p }}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

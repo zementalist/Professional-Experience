@@ -1,0 +1,33 @@
+{% extends 'dashboard/layout.html' %}
+
+{% block content %}
+
+<!--Section: Post-->
+
+
+<div class="row">
+    {% for post in posts %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card-content">
+            <div class="card-img">
+                <img src="{{post.image}}" alt="">
+                <span class="username">
+                    <h4> <a href="/dashboard/{{post.user_id}}" class="username_url">@{{post.user}}</a></h4>
+                </span>
+            </div>
+            <div class="card-desc">
+                <h3>{{ post.title }}</h3>
+                <p>{{post.body}}</p>
+                <a href="/posts/{{post.id}}" class="btn-card">Read</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% if not posts%}
+    <div class="col md 6 text-center">
+        <h3>You didn't create any posts yet.</h3>
+    </div>
+    {% endif %}
+</div>
+<!--Section: Post-->
+{% endblock %}

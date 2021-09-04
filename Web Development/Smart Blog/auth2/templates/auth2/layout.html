@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% load static %}
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <style>
+    .card-comments img {
+      width: 4rem
+    }
+
+    #article-meta {
+      color: gray;
+      margin-left: 10px;
+    }
+
+    .footer-dark {
+      padding: 50px 0;
+      color: #f0f9ff;
+      background-color: #282d32;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .auth-form form {
+      background: #f7f7f7;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+    }
+
+    ul.errorlist {
+      display: none;
+    }
+  </style>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/wow.min.js' %}"></script>
+</head>
+
+<body>
+
+  <!--Main Navigation-->
+  <header>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark scrolling-navbar">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand waves-effect" href="#">
+          <strong class="blue-text">Blog-X</strong>
+        </a>
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link waves-effect" href="/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="/posts/create">Create Post</a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="/dashboard/{{request.user.id}}">My Posts</a>
+            </li>
+            {% endif %}
+          </ul>
+
+          {% if not request.user.is_authenticated %}
+          <!-- Right -->
+          <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item">
+              <a href="/account/login" class="nav-link waves-effect">Login</a>
+            </li>
+            <li class="nav-item">
+              <a href="/account/register" class="nav-link waves-effect">Register</a>
+            </li>
+          </ul>
+          {% endif %}
+
+        </div>
+
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+  </header>
+  <!--Main Navigation-->
+
+
+
+  <!--Main layout-->
+  <main class="mt-5 pt-5">
+    <div class="container">
+      <!-- Alert messages -->
+      {% if alert %}
+      <div class="alert alert-{{alert.type}} text-center">
+        {{alert.message}}
+      </div>
+      {% endif %}
+      <!-- Alert Messages -->
+      {% block content %}
+
+      {% endblock %}
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small mdb-color darken-2 mt-4 wow fadeIn">
+
+
+    <!--Copyright-->
+    <div class="footer-copyright footer-dark py-3">
+      © 2021 Copyright:
+      <strong> IS402 Team </strong>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+  <script>
+    new WOW().init();
+  </script>
+</body>
+
+</html>

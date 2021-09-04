@@ -1,0 +1,260 @@
+{% extends 'posts/layout.html' %}
+
+{% block content %}
+<!--Section: Post-->
+<section class="mt-4">
+
+    <!--Grid row-->
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-8 mb-4">
+            <h3 class="my-2">{{ post.title }} </h3>
+            <small id="article-meta">By
+                <strong>
+                    <a href="/dashboard/{{post.user_id}}">
+                        @{{post.user}}
+                    </a>
+                </strong>
+                <span title="{{post.user.username}}'s learning style is {{user_learning_style}}">
+                    ({{user_learning_style}})
+                </span>
+                , on {{post.updated_at}}
+            </small>
+
+            <!--Featured Image-->
+            <div class="card my-4 mb-4">
+
+                <img src="{{post.image}}" alt="">
+
+            </div>
+            <!--/.Featured Image-->
+
+            {% if request.user.is_authenticated and request.user.id == post.user.id %}
+            <!-- CR(UD) Form -->
+            <div class="card my-4 mb-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="/posts/{{post.id}}/edit"><button class="btn btn-primary"
+                                style="width:100%;">Edit</button></a>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="/posts/{{post.id}}/delete" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="_method" value="delete">
+                            <a href="/posts/{{post.id}}/delete"><button style="width:100%;"
+                                    class="btn btn-danger">Delete</button></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--/ CR(UD) Form -->
+            {% endif %}
+            <!--Card-->
+            <div class="card mb-4">
+
+                <!--Card content-->
+                <div class="card-body">{{post.body}}</div>
+
+            </div>
+            <!--/.Card-->
+
+            <!--Comments-->
+            <div class="card card-comments mb-3 wow fadeIn">
+                <div class="card-header font-weight-bold" id="n-comments-indicator">{{comments.count}}
+                    Comment<small>(s)</small></div>
+                <div class="card-body" id="comments-section">
+                    {% for comment in comments %}
+                    <div class="media d-block d-md-flex mt-3">
+                        <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                            <a href="/dashboard/{{comment.user.id}}">
+                                <h5 class="mt-0 font-weight-bold">{{comment.user.first_name}} {{comment.user.last_name}}
+                                </h5>
+                            </a>
+                            <p style="font-size:12px;">on {{comment.created_at}}</p>
+                            {% if request.user.is_authenticated and request.user.id == comment.user.id %}
+                            <div class="dropdown pull-right float-right">
+                                <span style="cursor:pointer;" class="navbar-toggle" type="button"
+                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </span>
+                                <div onclick="remove_comment(this)" comment_id="{{comment.id}}" class="dropdown-menu"
+                                    style="cursor:pointer;" aria-labelledby="dropdownMenuButton">
+                                    Delete Comment
+                                </div>
+                            </div>
+                            {% endif %}
+                            {{comment.body}}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!--/.Comments-->
+
+            <!--Reply-->
+            <div class="card mb-3 wow fadeIn">
+                <div class="card-header font-weight-bold">Leave a comment</div>
+                <div class="card-body">
+                    {% if request.user.is_authenticated %}
+                    <!-- Default form reply -->
+                    <form id="comment-form" onsubmit=" event.preventDefault(); store_comment();">
+                        {% csrf_token %}
+                        <!-- Comment -->
+                        <div class="form-group">
+                            <textarea class="form-control" name='body' id="replyFormComment" rows="3"></textarea>
+                        </div>
+
+
+                        <div class="text-center mt-4">
+                            <button class="btn btn-info btn-md" type="submit">Post</button>
+                        </div>
+                    </form>
+                    <!-- Default form reply -->
+                    {% else %}
+                    <div class="text-center mt-4">
+                        <p>Before you leave a comment, you have to <a href="/account/login?next=/posts/{{post.id}}"
+                                class="btn btn-info btn-md">Login</a></p>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+            <!--/.Reply-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+
+
+
+
+            <!--/.Card : Dynamic content wrapper-->
+
+            <!--Card-->
+            <div class="card mb-4 wow fadeIn">
+
+                <div class="card-header">Related articles</div>
+
+                <!--Card content-->
+                <div class="card-body">
+                    {% if related_posts %}
+                    <ul class="list-unstyled">
+                        {% for post in related_posts %}
+                        <li class="media related-post">
+
+                            <div class="media-body">
+                                <a href="/posts/{{post.id}}">
+                                    <h5 class="mt-0 mb-1 font-weight-bold">{{post.title}}</h5>
+                                </a>
+                                {{post.body}}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <h4>There are no related posts!</h4>
+                    {% endif %}
+
+                </div>
+
+            </div>
+            <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+</section>
+<!--Section: Post-->
+
+<script>
+    function append_comment(comment) {
+        comment_blueprint = `
+            <div class="media d-block d-md-flex mt-3">
+                <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                    <a href="/dashboard/` + comment.user + `"><h5 class="mt-0 font-weight-bold">{{request.user.first_name}} {{request.user.last_name}}
+                    </h5></a>
+                    <p style="font-size:12px;">on ` + comment.created_at + `</p>
+                    <div class="dropdown pull-right float-right">
+                        <span style="cursor:pointer;" class="navbar-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </span>
+                        <div onclick="remove_comment(this)" comment_id="` + comment.id + `" class="dropdown-menu" style="cursor:pointer;" aria-labelledby="dropdownMenuButton">
+                            Delete Comment
+                        </div>
+                    </div>
+                    ` + comment.body + `
+                </div>
+            </div>
+            `
+        document.querySelector('#comments-section').innerHTML += comment_blueprint
+    }
+
+    function show_alert(_alert) {
+        div_alert = document.createElement('div')
+        div_alert.setAttribute('class', 'alert alert-' + _alert.type)
+        div_alert.innerHTML = _alert.message
+
+        document.querySelectorAll('.container')[1].appendChild(div_alert)
+        setTimeout(() => {
+            document.querySelectorAll('.container')[1].removeChild(div_alert)
+        }, 5000)
+    }
+
+    function store_comment() {
+        form = new FormData(document.forms['comment-form']);
+        data = {
+            'body': form.get('body'),
+            'post_id': "{{post.id}}",
+        }
+        encoded_data = JSON.stringify(data)
+        csrf_token = form.get('csrfmiddlewaretoken')
+
+        axios.post('/comments/store', encoded_data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRFToken': csrf_token
+                }
+            })
+            .then(response => {
+                let JsonResponse = response.data
+                if (JsonResponse.success) {
+                    update_comments_number(1);
+                    append_comment(JsonResponse.comment);
+                    document.forms['comment-form'].reset();
+                } else
+                    show_alert(JsonResponse.alert);
+            })
+    }
+
+    function remove_comment(element) {
+        comment_id = element.getAttribute('comment_id');
+        form = new FormData(document.forms['comment-form']);
+        csrf_token = form.get('csrfmiddlewaretoken')
+        axios.delete('/comments/' + comment_id + '/delete', {
+            headers: {
+                'X-CSRFToken': csrf_token
+            }
+        })
+        comment_container = element.parentElement.parentElement.parentElement
+        document.querySelector('#comments-section').removeChild(comment_container)
+        update_comments_number(-1);
+    }
+
+    function update_comments_number(value) {
+        element = document.getElementById('n-comments-indicator');
+        text = element.innerHTML
+        number_of_comments = parseInt(text.match(/\d+/))
+        new_number_of_comments = number_of_comments + value
+        text = text.replace(String(number_of_comments), String(new_number_of_comments))
+        element.innerHTML = text;
+    }
+</script>
+{% endblock %}
