@@ -6,6 +6,7 @@
   <li>Fear</li>
   <li>Anger</li>
   <li>Love</li>
+  <li>Surprise</li>
 </ol>
 
 <a href="https://www.kaggle.com/zeyadkhalid/emotion-recognition-lstm-93-accuracy" target="_blank">View on Kaggle</a>
