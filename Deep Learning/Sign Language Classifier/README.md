@@ -6,8 +6,9 @@
 <ol>
   <li>A</li>
   <li>B</li>
-  <li>..</li>
-  <li>..</li>
+  <li>C</li>
+  <li>...</li>
+  <li>...</li>
   <li value="26">Z</li>
   <li value="27">Space</li>
   <li value="28">Delete</li>
