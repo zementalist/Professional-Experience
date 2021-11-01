@@ -1,6 +1,7 @@
 # Firelink - File Sharing App
-<h5>written in C# ASP.NET</h5>
-<br>
+
+written in C# ASP.NET
+<br><br>
 <a href="http://firelnk.rf.gd/" target="_blank">View Web App</a>
 <br>
 * Upload any file & get a shareable link
