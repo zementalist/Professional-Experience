@@ -1,0 +1,120 @@
+﻿@model FireLink.ViewModels.FileModelFileTypeView
+@{
+    ViewBag.Title = "FileShow";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var File = Model.File;
+    var FileTypeDetails = Model.FileTypeDetails;
+    bool OwnerView = Model.OwnerView;
+    string FilePath = $"/Resources/userfiles/{FileTypeDetails.Type}/{File.Name}.{File.Extension}";
+    File.ResetFileName();
+    string FileFullName = File.Name + "." + File.Extension;
+    string FileURL = $"/files/{FileTypeDetails.Type}/{File.Id}";
+
+    DateTime when = File.CreatedAt;
+    TimeSpan ts = DateTime.Now.Subtract(when);
+    string DateFormat;
+    if (ts.TotalMinutes < 1)
+    {
+        DateFormat = $"{(int)ts.TotalSeconds} second(s) ago";
+    }
+    else if (ts.TotalHours < 1)
+    {
+        DateFormat = $"{(int)ts.TotalMinutes} minute(s) ago";
+    }
+    else if (ts.TotalDays < 1)
+    {
+        DateFormat = $"{(int)ts.TotalHours} hour(s) ago";
+    }
+    else
+    {
+        DateFormat = $"~{(int)ts.TotalDays} day(s) ago";
+    }
+
+    var MediaFilesList = new string[3] { "audio", "image", "video" };
+
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <div class="files">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-10 col-sm-8 col-lg-8 text-center">
+                    @if (File != null)
+                    {
+                        <div class="file-container my-4">
+                            <div class="row-centered">
+                                <!--Preview -->
+                                @if (FileTypeDetails.Type == "image")
+                                {
+                                    <div class="preview">
+                                        <img src="@FilePath" alt='@FileFullName' style="max-height:300px;">
+                                        <br>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="preview">
+                                        <i class='@FileTypeDetails.Icon icona"' style="font-size:15vw;"></i>
+                                        <br>
+                                    </div>
+                                }
+                                <!-- file details +  -->
+                                <div class="file-details">
+                                    <br>
+                                    <p class="filedata">File name: <span style="word-break:break-word;">@FileFullName</span></p>
+                                    <p class="filedata">File type: <span>@FileTypeDetails.Type</span></p>
+                                    <p class="filedata">File size: <span>@File.Size</span> MB</p>
+                                    <p class="filedata">Uploaded <span>@DateFormat</span> @if (!String.IsNullOrEmpty(File.Username)) {<span>by @File.Username</span>}</p>
+                                </div>
+                                <!-- Download button -->
+                                <div class="access-panel" style="display:inline-flex">
+                                    <a href="@FilePath" download="@FileFullName" class="btn btn-primary access">Download</a>
+                                    <!-- if(image|audio|video) view btn -->
+                                    @if (MediaFilesList.Contains(FileTypeDetails.Type))
+                                    {
+
+                                        <div style="display:inline-block;width:2vw;"></div>
+                                        <hr id="hr">
+                                        <a href="@FilePath" target="_blank" class="btn btn-primary access">View</a>
+                                    }
+                                </div>
+                                <br>
+                            </div>
+                            <div class="row justify-content-center mb-3">
+                                <!-- link{readonly} + copy_link btn -->
+                                <!-- secure_code + delete form\btn -->
+                                <form class="form-inline mx-1">
+                                    <input class="form-control" type="text" id="link" attr="@File.Id" value=@Request.Url.Authority@FileURL readonly>
+                                    <input type="button" class="btn btn-info" id="copy" value="Copy link">
+                                    <div id="alertZone"></div>
+                                </form>
+
+
+
+                                <form method="POST" action="/files/@FileTypeDetails.Type/@File.Id/delete" accept-charset="UTF-8" class="form-inline mx-1">
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <input placeholder="Secure Code" required="required" name="securecode" type="text" value="@(OwnerView ? File.SecureCode : null)" class="form-control">
+                                    <input type="submit" value="Delete file" class="btn btn-danger">
+                                </form>
+                                @if (OwnerView)
+                                {
+                                    <div class="alert alert-info my-3">
+                                        <span>
+                                            Save & Remember your file secure code, in case you want to delete it!
+                                        </span>
+                                    </div>
+                                }
+                            </div>
+                            <a href='/report/@FileTypeDetails.Type/@File.Id' id="repBtn">Report this file?</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/scripts/fileView.js")

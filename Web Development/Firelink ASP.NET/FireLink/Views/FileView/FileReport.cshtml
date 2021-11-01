@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "FileReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center report-container">
+    <div class="col-md-12">
+        <div class="main-container">
+            <div class="motivate">
+                <h2 id="contactMotto">Say something ...</h2>
+                <p>Having a problem with our services ? need to ask about something ? <strong>send us a message !</strong> </p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-sm-8 col-8 col-lg-8 contact-card">
+                    <h2 id="header">Contact Form</h2>
+                    <div class="contact-container">
+                        <form id="contact-form" method="post" action='@Url.Action("Store", "Report")' role="form">
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_email">Email<span class="astrisc"> *</span></label>
+                                            <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_name">Subject<span class="astrisc"> *</span></label>
+                                                <input id="form_name" readonly type="text" name="subject" class="form-control" required="required" value='@ViewData["id"]'>
+                                                <input type="hidden" name="type" value="report" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="form_message">Reason<span class="astrisc"> *</span></label>
+                                            <textarea id="form_message" name="body" class="form-control" placeholder="What are your reasons for reporting this file ? *" rows="4" required="required"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="submit" class="btn btn-success btn-send" value="Report">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="text-muted">
+                                            <strong><span class="astrisc"> *</span></strong> These fields are required.
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

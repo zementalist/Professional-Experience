@@ -1,0 +1,250 @@
+.home .image-container {
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a77d5', endColorstr='#539fe1',GradientType=1 );
+    position: absolute;
+    z-index: 49;
+}
+.home .background-infrastructure {
+    background: rgb(10,119,213);
+    background: -moz-linear-gradient(left, rgba(10,119,213,1) 25vw, rgba(10,119,213,1) 25vw, rgba(115,177,231,1) 35vw, rgba(83,159,225,1) 79%);
+    background: -webkit-linear-gradient(left, rgba(10,119,213,1) 25vw,rgba(10,119,213,1) 25vw,rgba(115,177,231,1) 35vw,rgba(83,159,225,1) 79%);
+    background: linear-gradient(to right, rgba(10,119,213,1) 25vw,rgba(10,119,213,1) 25vw,rgba(115,177,231,1) 35vw,rgba(83,159,225,1) 79%);
+    width: 100%;
+    height: 105vh;
+    position: relative;
+    z-index: 48;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 20px 0px #444;
+}
+.home .component-infrastructure {
+    width: 100%;
+    background: #dedede;
+    padding: 20px 0px 40px 4vw;
+    position: relative;
+    z-index: 47;
+}
+.home .motto-container {
+    width: 100%;
+    text-align: center;
+    margin-top: -30px;
+}
+.home .motto {
+    position: relative;
+    font-size: 4rem;
+    text-align: center;
+    color: white;
+    font-family: 'Baloo Thambi', cursive;
+}
+.home #img1 {
+    width: 27vw;
+    text-align: center;
+    align-self: center;
+}
+
+.home h4 {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.home .up-btn {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #fff;
+    display: inline-block;
+    width: 100%;
+    padding: 15px 30px;
+    border-radius: 40px;
+    color: #292929;
+    font-weight: 700;
+    -webkit-box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+
+.home .file-card {
+    background-color: whitesmoke;
+    border: 5px solid lightgray;
+    max-width: 25vw;
+    border-radius: 28px;
+    position: relative;
+    margin-top: 15px;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px 0px #444;
+}
+
+.home .file-card:hover #textType {
+        -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(10, 120, 148)), color-stop(50%, rgba(46, 25, 235, 0.7)), to(rgba(0,0,0,1)));
+        text-shadow: 0 2px 0 #e04646;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        transition: all .5s;
+        text-shadow: 2px 3px 3px #ff0000;
+        -webkit-text-stroke: 1px rgb(20, 109, 182);
+    }
+
+.file-card .icon-container {
+    text-align: center;
+    align-content: center;
+}
+
+.file-card .icon {
+    position: relative;
+    font-size: 13vw;
+    object-fit: cover;
+    text-align: center;
+    align-self: center;
+    padding: 5px 0px 10px 0px;
+}
+
+.file-card .typeName {
+    border-top: 5px solid black;
+    border-radius: 58px;
+}
+
+.file-card #textType {
+    transition: 1s;
+    font-family: 'Titan One', cursive;
+    text-align: center;
+    font-weight: 900;
+    font-size: 4.2vw;
+    color: rgb(7, 0, 0);
+    text-decoration: none;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), color-stop(50%, rgba(0,0,0,0.7)), to(rgba(0,0,0,1)));
+    text-shadow: 0 2px 0 #e9e9e9;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+    text-shadow: 2px 3px 3px #d15454;
+    -webkit-text-stroke: 1px rgb(20, 109, 182);
+}
+
+.question {
+    font-size: 1.6rem;
+}
+.answer {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-left: 2vw;
+}
+
+.report-container .main-container {
+    min-height: 100%;
+}
+
+.contact-container {
+    margin-top: -3vh;
+}
+
+.contact-card {
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.motivate {
+    margin: 10px 0px 20px 30px;
+}
+
+.report-container p {
+    margin-left: 20px;
+}
+
+.report-container label {
+    font-weight: 900;
+}
+
+.astrisc {
+    color: red;
+}
+
+.report-container #header {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: gray;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: #EDEDED 3px 2px 0;
+    position: relative;
+    margin-top: 10px;
+}
+
+    .report-container #header:after {
+        content: "dreamdealer";
+        position: absolute;
+        left: 8px;
+        top: 32px;
+    }
+
+    .report-container #header:after {
+        /*background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;*/
+        background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
+        background-size: 4px 4px;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        z-index: -5;
+        display: block;
+        text-shadow: none;
+    }
+
+
+@media screen and (max-width:575px) {
+    .file-card #textType {
+        font-size: 3.2vw;
+    }
+
+    .file-card .icon {
+        font-size: 15vw;
+    }
+}
+
+
+@media screen and (max-width:575px) {
+    .home #img1 {
+        margin-left: 0rem;
+        text-align: center;
+        align-self: center;
+        width: 100%;
+        height: 250px;
+    }
+    .home .motto {
+        font-size: 10vw;
+        margin-top: 2vw;
+        position: relative;
+    }
+    .home .ground {
+        align-content: center;
+        text-align: center;
+    }
+    .home .background-infrastructure {
+        height: 120vh;
+    }
+    .home .up-btn {
+        margin-top: auto;
+    }
+}
+
+@media screen and (min-width:598px) and (max-width:936px) {
+    .background-infrastructure {
+        height: 120vh;
+    }
+}
+@media screen and (max-width:597px) {
+    .home .background-infrastructure {
+        height: 120vh;
+    }
+}
+@media screen and (max-width:767px) {
+    .home .up-btn {
+        font-size: 150%;
+    }
+}

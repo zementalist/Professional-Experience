@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = " ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    string AllowedExtensions = String.Join(", ", Model.AllowedExtensions);
+    string[] AcceptedExtensionsArray = AllowedExtensions.Split(' ');
+    string AcceptedExtensions = "." + String.Join(".", AcceptedExtensionsArray);
+    string MaxSize = (((Convert.ToInt32(Model.MaxSize)) + 1) / 1000).ToString();
+
+}
+
+<div class="process" id="drop_zone">
+    <div class="row justify-content-center text-center">
+        <div class="col-md-8">
+            <div class="process-container ">
+                <form method="POST" action="@Url.Action("Upload", "File")" accept-charset="utf-8" enctype="multipart/form-data" id="myForm">
+                    <div class="row"><div class="col-md-3 col-sm-3 col-3 col-lg-3"> <label for="name">Name:</label> <br> <label for="file" id="fileLabel">File:</label> <br> <label for="radio">Keep file for:</label></div> <div class="col-md-6 col-sm-6 col-6 col-lg-6"><input placeholder="Enter your name (optional)" name="username" type="text" value="" id="name" class="form-control"> <input id="file" required="required" accept="@AcceptedExtensions" maxsize="@Model.MaxSize" name="file" type="file" style="display: none;"> <label for="file" class="btn btn-info choose-btn">Choose file</label> <span id="filename"></span> <br> <input checked="checked" name="keepfor" type="radio" value="0"> <div style="display: inline-block;">4 hours</div><br> <input name="keepfor" type="radio" value="1" style="margin-top: -1rem;"> <div style="display: inline-block;">1 day</div> <div class="loader-container"></div> <br> <div class="progress-container"><div class="progress-bar">0%</div></div> <input type="text" name="type" readonly="readonly" value="@Model.Type" style="display: none;"> <div class="up-btn-container"><input id="uploadBtn" type="submit" value="Upload" class="btn btn-primary" style="width: 75%;"></div></div> <div class="col-md-3 col-3"></div></div> <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 col-lg-12">
+                            <div id="drop-cover">
+                                Drag &amp; Drop a File Here
+                            </div>
+                        </div>
+                    </div>
+                </form> <div class="row">
+                    <div class="col-md-6 col-6 col-sm-6 col-offset-6 mx-auto my-2">
+                        <div class="alert alert-info my-1">
+                            Max size to upload : <span style="font-weight: bold;">@MaxSize MB</span>
+                        </div> <div class="alert alert-info">
+                            File Extension must be one of : <span style="font-weight: bold;">@AllowedExtensions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript" language="javascript">
+        let profilePic = {};
+        let file = null;
+        let fileBase64 = "";
+        $(document).ready(function () {
+            $("#file").on('change', function () {
+                var input = $(this),
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [label]);
+                profilePic.name = label;
+                profilePic.path = input.val();
+                file = this.files[0]
+                console.log(file);
+                showImage(this);
+            });
+
+            function showImage(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        let imageBase64 = e.target.result
+                        $('#img-upload').attr('src', imageBase64);
+                        that.fileBase64 = imageBase64;
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        });
+    </script>
+}
+
+@Scripts.Render("~/scripts/fileUpload.js")

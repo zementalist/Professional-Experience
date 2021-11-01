@@ -1,0 +1,151 @@
+html , body {
+    min-height: 100%;
+    position: relative;
+}
+.files img {
+    max-height: 300px;
+}
+.icona {
+    height: 100px;
+}
+
+.files {
+    text-align: center;
+    margin-bottom: 50px;
+    min-height: 100%;
+    padding-top:10px;
+}
+.access-panel {
+    text-align: center;
+}
+.access {
+    width: 150px;
+    font-weight: 900;
+    font-size: 110%;
+}
+.form-inline {
+    display: inline-block;
+}
+#hr {
+    display: none;
+}
+.up-btn {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #fff;
+    display: inline-block;
+    width: 100%;
+    padding: 15px 30px;
+    border-radius: 40px;
+    color: #292929;
+    font-weight: 700;
+    -webkit-box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+span {
+    font-weight: 900;
+}
+
+.searchsSection {
+    margin-top: 5%;
+}
+
+.messagesSection {
+    opacity: 0;
+    display: none;
+}
+
+.table {
+    table-layout: fixed;
+    word-wrap: break-word;
+    margin-bottom: 3rem;
+}
+
+h4 {
+    text-shadow: 1px 1px #18ba60;
+}
+
+
+
+
+td, tr, th {
+    text-align: center;
+}
+/*Resize the wrap to see the search bar change!*/
+#form {
+    text-align: center;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++ */
+table {
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+    table * {
+        position: relative;
+    }
+
+    table thead tr {
+        background: #5c5c5c;
+        color: white;
+    }
+
+.table thead th {
+    vertical-align: middle;
+}
+
+table tbody tr {
+    max-height: 50px;
+}
+
+    table tbody tr:last-child {
+        border: 0;
+    }
+
+.table td, .table th {
+    text-align: center;
+    padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+    vertical-align: middle;
+}
+
+
+tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+tbody tr {
+    font-family: OpenSans-Regular;
+    color: #808080;
+    font-weight: unset;
+}
+
+    tbody tr:hover {
+        color: #555555;
+        background-color: #f5f5f5;
+        cursor: pointer;
+    }
+
+@media screen and (max-width:650px) {
+    img {
+        max-width: 100%;
+    }
+}
+@media screen and (max-width:508px) {
+    #hr {
+        display: block;
+    }
+    .up-btn2 {
+        padding: 7.5px 15px;
+    }
+}

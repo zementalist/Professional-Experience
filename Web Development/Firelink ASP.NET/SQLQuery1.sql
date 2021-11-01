@@ -1,0 +1,1 @@
+﻿DBCC CHECKIDENT (Images, RESEED, 0);
