@@ -1,0 +1,416 @@
+{% extends 'home/index.html' %}
+{% block content %}
+
+        <!-- Header -->
+        <header id="header" class="header"
+            style="background-image: url('/static/images/bg.png');background-size:cover;">
+            <div class="header-content">
+                <div class="container h-100">
+                    <div class="row h-100">
+                        <div class="col-lg-6">
+                            <div class="image-container">
+                                <!-- <img class="img-fluid" data-src="https://datawow.s3.amazonaws.com/blog/43/image_1/facial-recognition-connected-real-estate.png" alt="alternative"> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-6 my-auto">
+                            <div class="text-container">
+                                <h1 class="text-white wow animate__animated animate__fadeInRight" data-wow-duration="2s">Face Factory</h1>
+                                <p class="lead text-white wow animate__animated animate__fadeInRight" data-wow-duration="2s">Using the power of computer vision & image processing to
+                                    recognize, extract and analyze faces</p>
+                                <a class="btn-solid-lg wow animate__animated animate__fadeInUp" data-wow-duration="2s" href="#services">DISCOVER</a>
+                            </div> <!-- end of text-container -->
+                        </div> <!-- end of col -->
+                    </div> <!-- end of row -->
+                </div> <!-- end of container -->
+            </div> <!-- end of header-content -->
+        </header> <!-- end of header -->
+        <!-- end of header -->
+
+<div class="py-5" id="services">
+    <div class="container-fluid">
+        <!-- Row -->
+        {% csrf_token %}
+
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-sm-6 col-10 my-3 text-center wow animate__animated animate__fadeInUp" data-wow-duration="1.5s">
+                <!--Card-->
+                <div class="card">
+                    <!--Card image-->
+                    <div class="card-image-container">
+                        <img class="img-fluid lazyload" src='/static/images/placeholder.png' data-src="/static/images/detection.png" alt="Card image cap">
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body bottom-border-blue d-flex align-items-center flex-column">
+                        <!--Title-->
+                        <h4 class="card-title">Improved Face Detection</h4>
+                        <!--Text-->
+                        <p class="card-text">Recognize a single face in an image and detect 81 main features.
+                            These are
+                            points on the face such as the corners of the mouth, along the eyebrows, on
+                            the eyes, forehead, and so forth.</p>
+                        <div class="btn-group d-flex flex-row justify-content-around w-100">
+                            <a href="#detector-section" class="btn btn-info-gradiant btn-md border-0 text-white mt-auto">
+                                <span>Vew  Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Card-->
+            </div>
+            <div class="col-md-4 col-sm-6 col-10 my-3 text-center wow animate__animated animate__fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">
+                <!--Card-->
+                <div class="card">
+                    <!--Card image-->
+                    <div class="card-image-container">
+                        <img class="img-fluid lazyload" src='/static/images/placeholder.png' data-src="/static/images/analyzer.jpg" alt="Card image cap">
+
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body bottom-border-green d-flex align-items-center flex-column">
+                        <!--Title-->
+                        <h4 class="card-title">Facial Features Geometric Analysis</h4>
+                        <!--Text-->
+                        <p class="card-text">Provide measurements: distances, angles, lengths and heights of
+                            variant facial features which can be used in other algorithms.</p>
+                        <div class="btn-group d-flex flex-row justify-content-around w-100 mt-auto">
+                            <a href="#analyzer-section"
+                                class="btn btn-info-gradiant btn-md border-0 text-white mt-auto"><span>Vew
+                                    Demo</span></a>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Card-->
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-10 my-3 text-center wow animate__animated animate__fadeInUp" data-wow-duration="2s" data-wow-delay="1s">
+                <!--Card-->
+                <div class="card">
+                    <!--Card image-->
+                    <div class="card-image-container">
+                        <img class="img-fluid lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor.jpg" alt="Card image cap">
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body bottom-border-red d-flex align-items-center flex-column">
+                        <!--Title-->
+                        <h4 class="card-title">Extract & Separate Facial Features</h4>
+                        <!--Text-->
+                        <p class="card-text">Extract each part or feature of the face into a single image, the
+                            algorithm provides a combination of +10 features.</p>
+                        <div class="btn-group d-flex flex-row justify-content-around w-100 mt-auto">
+                            <a href="#extractor-section"
+                                class="btn btn-info-gradiant btn-md border-0 text-white mt-auto"><span>Vew
+                                    Demo</span></a>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Card-->
+            </div>
+
+        </div>
+    </div>
+</div>
+<hr class="my-4">
+<div class="container-fluid" id="detector-section" style="overflow:hidden;">
+    <div class="row text-center py-2">
+        <div class="col-12 py-4">
+            <h1 class="display-4 wow animate__animated animate__backInLeft" data-wow-duration="2s">Improved Face Detection</h1>
+        </div>
+        <div class="col-12 col-lg-5 mb-5 wow animate__animated animate__zoomIn" data-wow-duration="2s">
+            <div class="imgBox-x">
+                <img class="demo-img" src="/static/images/detection-x.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-12 col-lg-2 d-none d-lg-block my-auto">
+            <i class="gg-arrow-long-right mx-auto"></i>
+        </div>
+        <div class="col-12 col-lg-2 d-block d-lg-none my-auto">
+            <i class="gg-arrow-long-right mx-auto mb-5" style="transform: rotate(90deg);"></i>
+        </div>
+        <div class="col-12 col-lg-5 wow animate__animated animate__zoomIn" data-wow-duration="2s">
+            <div class="imgBox">
+             <img class="demo-img" src="/static/images/detection-y.jpg">
+            </div>
+        </div>
+        <div class="col-12 text-center mt-3">
+            <button id="detector" class="btn btn-info-gradiant upload-btn btn-md border-0 text-white mt-auto">
+                Try detector
+                <div class="loader d-none"></div>
+            </button>
+            <input type="file" accept="image/*" class="d-none" form='myform' feature='detector' >
+        </div>
+    </div>
+
+    <hr class="my-4">
+    <div class="container-fluid" id="analyzer-section">
+        <div class="row text-center pb-5">
+            <div class="col-12">
+                <h1 class="display-4 wow animate__animated animate__backInRight">Facial Features Geometric
+                    Analysis</h1>
+            </div>
+            <div class="col-12 mb-5 mt-3 wow animate__animated animate__zoomIn" data-wow-duration="2s">
+                <div class="imgBox">
+                    <img class="demo-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/analysis.png" alt="">
+                </div>
+            </div>
+
+            <div class="col-10 col-sm-8 col-lg-6 mx-auto my-auto table-container text-left wow animate__animated animate__fadeIn" data-wow-duration="2s">
+                <table class="table">
+                    <thead>
+                        <tr class="text-center">
+                            <th style="text-align:left;">Feature</th>
+                            <th>Measure (in pixels, NOT scaled)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="forehead height">Forehead (Upeer part) height</td>
+                            <td class="measure" style="background-color: rgb(255,0,255);">138</td>
+                        </tr>
+                        <tr>
+                            <td id="middle face height">Face Middle part height</td>
+                            <td class="measure" style="background-color: rgb(0,0,205);;">159</td>
+                        </tr>
+                        <tr>
+                            <td id="lower face height">Face Lower part height</td>
+                            <td class="measure" style="background-color: rgb(0,255,127);color:black;">196</td>
+                        </tr>
+                        <tr>
+                            <td id="left eye area">Left eye area</td>
+                            <td class="measure" style="background-color: rgb(30,144,255);">1018</td>
+                        </tr>
+                        <tr>
+                            <td id="right eye area">Right eye area</td>
+                            <td class="measure" style="background-color: rgb(238,232,170);color:black;">978.5</td>
+                        </tr>
+                        <tr>
+                            <td id="eye to eye dist">Distance: between eyes</td>
+                            <td class="measure" style="background-color: rgb(13,115,119);">114</td>
+                        </tr>
+                        <tr>
+                            <td id="eyebrows distance">Distance: between eyebrows</td>
+                            <td class="measure" style="background-color: rgb(240,248,255);color:black;">59</td>
+                        </tr>
+                        <tr>
+                            <td id="eye to eyebrow dist">Distance: eye to eyebrow</td>
+                            <td class="measure" style="background-color: rgb(173,255,47);color:black;">53.5</td>
+                        </tr>
+                        <tr>
+                            <td id="upper lip height">Upper lip thickness</td>
+                            <td class="measure" style="background-color: rgb(255,0,0);color:black;">20</td>
+                        </tr>
+                        <tr>
+                            <td id="lower lip height">Lower lip thickness</td>
+                            <td class="measure" style="background-color: rgb(255,222,173);color:black;">29</td>
+                        </tr>
+                        <tr>
+                            <td id="nose length">Nose length</td>
+                            <td class="measure" style="background-color: rgb(255,140,0);color:black;">101</td>
+                        </tr>
+                        <tr>
+                            <td id="nose width">Nose Width</td>
+                            <td class="measure" style="background-color: rgb(255,255,0);color:black;">74</td>
+                        </tr>
+                        <tr>
+                            <td id="nose arc">Nose Arch°</td>
+                            <td class="measure" style="background-color: rgb(250,128,114);;color:black;">141</td>
+                        </tr>
+                        <tr>
+                            <td id="eyebrow shape detector 1" title="Three ranges representing 3 classes: Straight, Arched, Angled">Eyebrow shape detector° 1</td>
+                            <td class="measure" style="background-color: rgb(0,191,255);">137</td>
+                        </tr>
+                        <tr>
+                            <td id="eyebrow shape detector 2" title="Three ranges representing 3 classes: Straight, Arched, Angled">Eyebrow shape detector 2</td>
+                            <td class="measure" style="background-color: rgb(255,20,147);color:black;">1</td>
+                        </tr>
+                        <tr>
+                            <td id="eye slope detector1" title="Three ranges representing 3 classes: Straight, Upward, Downward">Eye slope detector 1</td>
+                            <td class="measure" style="background-color: rgb(255,96,32);color:black;">2.319</td>
+                        </tr>
+                        <tr>
+                            <td id="eye slope detector2" title="Three ranges representing 3 classes: Straight, Upward, Downward">Eye slope detector 2</td>
+                            <td class="measure" style="background-color: rgb(0,255,255);color:black;">3.078</td>
+                        </tr>
+                        <tr>
+                            <td id="eyebrow slope">Eyebrow slope</td>
+                            <td class="measure" style="background-color: rgb(224,255,160);color:black;">0.065</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12 text-center mt-5 ">
+                <button id="analyzer" class="btn upload-btn btn-info-gradiant btn-md border-0 text-white mt-auto">
+                    Try analyzer
+                    <div class="loader d-none"></div>
+                </button>
+                <input type="file" accept="image/*" class="d-none" feature='analyzer' form='myform'>
+            </div>
+        </div>
+
+    </div>
+    <hr class="pt-3">
+    <div class="container-fluid py-3 " id="extractor-section">
+        <div class="row text-center">
+            <div class="col-12 pb-4">
+                <h1 class="display-4 wow animate__animated animate__backInUp">Extract & Separate Facial Features</h1>
+            </div>
+            <div class="col-12 py-5 wow animate__animated animate__zoomIn" data-wow-duration="2s" id="imgBox-extractor">
+                <img class="demo-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-x.jpg" alt="">
+            </div>
+            <div class="col-12 wow animate__animated animate__backInUp" id="forehead">
+                <img class="extractor-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-y/forehead.jpg">
+            </div>
+            <div class="col-6 wow animate__animated animate__backInLeft" id="left_eyebrow">
+                <img class="extractor-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-y/left_eyebrow.jpg">
+            </div>
+            <div class="col-6 wow animate__animated animate__backInRight" id="right_eyebrow">
+                <img class="extractor-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-y/right_eyebrow.jpg">
+            </div>
+            <div class="col-6 wow animate__animated animate__backInLeft" id="left_eye">
+                <img class="extractor-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-y/left_eye.jpg">
+            </div>
+            <div class="col-6 wow animate__animated animate__backInRight" id="right_eye">
+                <img class="extractor-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-y/right_eye.jpg">
+            </div>
+            <div class="col-6 wow animate__animated animate__backInLeft" id="left_eye_eyebrow">
+                <img class="extractor-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-y/left_eye_eyebrow.jpg">
+            </div>
+            <div class="col-6 wow animate__animated animate__backInRight" id="right_eye_eyebrow">
+                <img class="extractor-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-y/right_eye_eyebrow.jpg">
+            </div>
+            <div class="col-12 wow animate__animated animate__backInLeft" id="both_eye_eyebrow">
+                <img class="extractor-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-y/both_eye_eyebrow.jpg">
+            </div>
+            <div class="col-12 wow animate__animated animate__backInRight" id="nose">
+                <img class="extractor-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-y/nose.jpg">
+            </div>
+            <div class="col-12 wow animate__animated animate__backInLeft" id="mouth">
+                <img class="extractor-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-y/mouth.jpg">
+            </div>
+            <div class="col-12 wow animate__animated animate__backInUp" id="eye_nose_mouth_eyebrow">
+                <img class="extractor-img lazyload" src='/static/images/placeholder.png' data-src="/static/images/extractor-y/eye_nose_mouth_eyebrow.jpg">
+            </div>
+            <div class="col-12 text-center mt-5">
+                <button id="extractor" class="btn btn-info-gradiant upload-btn btn-md border-0 text-white mt-auto">
+                    Try extractor
+                    <div class="loader d-none"></div>
+                </button>
+                <input type="file" accept="image/*" class="d-none" form='myform' feature='extractor' >
+                
+            </div>
+            
+        </div>
+        
+</div>
+
+<script>
+
+    function handle_response(caseNumber, data) {
+        let resultContainer = document.getElementsByClassName('imgBox');
+        switch(caseNumber) {
+            // Detection
+            case 0:
+                resultContainer[caseNumber].innerHTML = data.image;
+                document.getElementsByClassName('imgBox-x')[0].firstElementChild.classList.add('blurred-img');
+                break;
+            // Analysis
+            case 1:
+                resultContainer[caseNumber].innerHTML = data.image;
+                measures_td = [...document.getElementsByClassName('measure')];
+                measures_td.forEach(table_data => {
+                    let data_name = table_data.previousElementSibling.getAttribute('id');
+                    table_data.innerHTML = data.measurements[data_name];
+                });
+                break;
+            case 2:
+                document.getElementById('imgBox-extractor').innerHTML = data.image
+                for(let key in data.features) {
+                    document.getElementById(key).innerHTML = data.features[key];
+                }
+                break;
+        }
+    }
+    function toggleSpinner(featureName) {
+        let btn = document.getElementById(featureName);
+        if(btn.classList.contains('loading')){
+            btn.classList.remove('loading')
+            btn.firstElementChild.classList.add('d-none')
+            btn.innerHTML += `Try ${featureName}`;
+            btn.removeAttribute('disabled');
+        }
+        else {
+            btn.classList.add('loading');
+            btn.innerHTML = btn.innerHTML.replace(`Try ${featureName}`, '')
+            document.querySelector(`#${featureName} .loader`).classList.remove('d-none')
+            console.log(`#${featureName} .loader`)
+            
+            btn.setAttribute('disabled', true);
+        }
+
+    }
+
+    function submit() {
+        let feature = event.target.getAttribute('feature');
+        let name = event.target.getAttribute('name')
+        let csrf = document.querySelector('input[name=csrfmiddlewaretoken]').value;
+        let endpoint;
+        if (feature == 'detector') {
+            endpoint = '/detect/'
+            result_element_index = 0
+        }
+        else if(feature == 'analyzer') {
+            endpoint = '/analyze/'
+            result_element_index = 1
+        }
+        else if(feature == 'extractor'){
+            endpoint = '/extract/'
+            result_element_index = 2
+        }
+        let files = event.target.files
+
+        let valid_file_types = ['image/jpeg', 'image/jpg', 'image/png'];
+        if(!valid_file_types.includes(files[0]['type'])){
+            alert("Allowed file types: jpg, jpeg, png");
+            return;
+        }
+            
+
+        let data = {name: event.target.value}
+
+        let formData = new FormData();
+        
+        formData.append('file', files[0])
+
+        toggleSpinner(feature);
+
+        // clear input
+        event.target.value = '';
+
+        axios.post(endpoint, formData, {
+            headers: {
+                'X-CSRFToken': csrf,
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(response => {
+            toggleSpinner(feature);
+            if (response.data.error)
+                alert(response.data.error);
+            else
+                handle_response(result_element_index, response.data);
+        })
+    }
+
+    $(document).ready(() => {
+        $('.upload-btn').on('click', () => {
+            let btn_id = $(event.target).attr('id');
+            document.querySelector(`input[feature="${btn_id}"]`).click()
+        })
+        $('input[type="file"]').on('change', function() {
+            submit()
+        })
+
+    })
+</script>
+{% endblock %}

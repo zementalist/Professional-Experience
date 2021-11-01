@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">   
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <style>
+        /*********************/
+        /*    04. Header     */
+        /*********************/
+        body,
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+
+        .header {
+            background-color: #fff;
+
+        }
+
+        .header .header-content {
+            text-align: center;
+            height: 100vh;
+        }
+
+        .header .text-container {
+            margin-bottom: 4rem;
+        }
+
+        .header h1 {
+            margin-bottom: 1.125rem;
+            font-size: 2.5rem;
+            line-height: 3.125rem;
+        }
+
+        .header .p-large {
+            margin-bottom: 1.875rem;
+        }
+
+        .btn-solid-lg {
+            display: inline-block;
+            padding: 1.375rem 2.625rem 1.375rem 2.625rem;
+            border: 0.125rem solid rgb(0, 176, 125);
+            border-radius: 2rem;
+            background-color: rgb(0, 176, 125);
+            color: #fff;
+            font: 700 0.75rem/0 "Raleway", sans-serif;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-solid-lg:hover {
+            background-color: transparent;
+            color: rgb(0, 176, 125);
+            text-decoration: none;
+        }
+
+        .footer-dark {
+            padding: 50px 0;
+            color: #f0f9ff;
+            background-color: #282d32;
+            bottom: 0;
+            width: 100%;
+        }
+        .gg-arrow-long-right {
+            box-sizing: border-box;
+            position: relative;
+            display: block;
+            transform: scale(var(--ggs,2));
+            border-top: 2px solid transparent;
+            border-bottom: 2px solid transparent;
+            box-shadow: inset 0 0 0 2px;
+            width: 50px;
+            color: #00b07d;
+            height: 6px;
+        }
+        .gg-arrow-long-right::after {
+            content: "";
+            display: block;
+            box-sizing: border-box;
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-top: 2px solid;
+            border-right: 2px solid;
+            transform: rotate(45deg);
+            right: 0;
+            bottom: -2px
+        }
+        .card {
+            height: 100%;
+
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-image-container {
+            height: 300px;
+        }
+
+        .bottom-border-green {
+            border-bottom: 5px solid rgb(0, 176, 125);
+        }
+
+        .bottom-border-red {
+            border-bottom: 5px solid rgb(176, 0, 0);
+        }
+
+        .bottom-border-blue {
+            border-bottom: 5px solid rgb(0, 95, 176);
+        }
+
+        .card,
+        .card-body {
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        .btn-info-gradiant {
+            background: #188ef4;
+            background: -webkit-linear-gradient(legacy-direction(to right), #00b07d 0%, #3cc391 100%) !important;
+            background: -webkit-gradient(linear, left top, right top, from(#00b07d), to(#3cc391)) !important;
+            background: -webkit-linear-gradient(left, #00b07d 0%, #3cc391 100%) !important;
+            background: -o-linear-gradient(left, #00b07d 0%, #3cc391 100%) !important;
+            background: linear-gradient(to right, #00b07d 0%, #3cc391 100%) !important;
+            border-radius: 25px !important;
+            text-transform: capitalize;
+        }
+
+        .btn-info-gradiant:hover {
+            background: #316ce8;
+            background: -webkit-linear-gradient(legacy-direction(to right), #3cc391 0%, #00b07d 100%) !important;
+            background: -webkit-gradient(linear, left top, right top, from(#3cc391), to(#00b07d)) !important;
+            background: -webkit-linear-gradient(left, #3cc391 0%, #00b07d 100%) !important;
+            background: -o-linear-gradient(left, #3cc391 0%, #00b07d 100%) !important;
+            background: linear-gradient(to right, #3cc391 0%, #00b07d 100%) !important;
+            transition: 1s;
+
+        }
+        label {
+            margin-bottom: 0px;
+        }
+        a:active {
+            background-image: red !important;
+        }
+        .demo-img {
+            height: 400px;
+            border: 0px;
+            border-radius: 25px;
+        }
+        .extractor-img {
+            padding: 1rem;
+            max-height: 33vw;
+            max-width: 33vw;
+
+        }
+
+        #extractor .col-6, #extractor .col-12 {
+            align-self: center;
+        }
+
+
+        .imgBox, .imgBox-x { /* now a container for the image */
+            display: inline-block; /* shrink wrap to image */
+            overflow: hidden; /* hide the excess */
+          }
+          .imgBox img, .imgBox-x img {
+            display: block; /* no whitespace */
+            transition: .3s ease-in-out;
+            transform: scale(1.3);
+          }
+          .imgBox img:hover, .imgBox-x img:hover {
+            transform: scale(1);
+            border-radius: 25px;
+          }
+          .blurred-img {
+            filter: blur(8px);
+            -webkit-filter: blur(8px);
+          }
+          .table-container {
+            height:400px;
+            overflow-y:scroll;
+            border:2px solid #00b07d;
+            border-left: none;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            direction: rtl;
+          }
+          .table-container table {
+              direction: ltr;
+          }
+
+          .table thead th {
+              width: 60%;
+              text-align: center;
+              vertical-align: middle;
+          }
+          
+        .table-container::-webkit-scrollbar-track {
+            background-color: #d6d6d6;
+        }
+        .table-container::-webkit-scrollbar {
+            width: 8px;
+            background-color: #7d7d7d;
+          }
+        .table-container::-webkit-scrollbar-thumb {
+            background-color: #00b07d;
+            border-radius: 25px;
+        }
+
+        .measure {
+            text-align: center;
+            color:white;
+        }
+
+        .custom-height {
+            height: 75%;
+            padding: 1rem;
+            max-height: 100px;
+        }
+
+
+
+        .loader {
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            background: #ffffff;
+            background: -moz-linear-gradient(left, #ffffff 3%, rgba(255, 255, 255, 0) 50%);
+            background: -webkit-linear-gradient(left, #ffffff 3%, rgba(255, 255, 255, 0) 50%);
+            background: -o-linear-gradient(left, #ffffff 3%, rgba(255, 255, 255, 0) 50%);
+            background: -ms-linear-gradient(left, #ffffff 3%, rgba(255, 255, 255, 0) 50%);
+            background: linear-gradient(to right, #ffffff 3%, rgba(255, 255, 255, 0) 50%);
+            position: relative;
+            -webkit-animation: load3 1.4s infinite linear;
+            animation: load3 1.4s infinite linear;
+            -webkit-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+          }
+          .loader:before {
+            width: 50%;
+            height: 50%;
+            background: #ffffff;
+            border-radius: 100% 0 0 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+          .loader:after {
+            width: 75%;
+            height: 75%;
+            border-radius: 50%;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+          }
+          @-webkit-keyframes load3 {
+            0% {
+              -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+            }
+            100% {
+              -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+            }
+          }
+          @keyframes load3 {
+            0% {
+              -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+            }
+            100% {
+              -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+            }
+          }
+
+          @media (max-width: 500px) {
+            .demo-img {
+                height: 300px;
+            }
+            .card-image-container {
+                height: 200px;
+            }
+            .display-4 {
+                font-size: 2rem;
+                font-weight: 400;
+            }
+        }
+        @media (max-width: 350px) {
+            .demo-img {
+                height: 200px;
+            }
+            
+        }
+    </style>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+</head>
+
+<body>
+
+
+
+
+    <!--Main layout-->
+    <main>
+
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer class="page-footer text-center font-small mdb-color darken-2 mt-4 wow fadeIn">
+
+
+        <!--Copyright-->
+        <div class="footer-copyright footer-dark py-3">
+            © 2021 Copyright:
+            <strong> <a href="https://github.com/zementalist">Zeyad Khalid</a></strong>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+    <script src="{% static 'js/lazyload.min.js' %}"></script>
+    <script src="{% static 'js/axios.js' %}"></script>
+    <script>
+        new WOW().init();
+        new LazyLoad(document.getElementsByTagName('img'),{rootMargin:'500px'})
+
+    </script>
+</body>
+
+</html>
