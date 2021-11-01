@@ -1,5 +1,5 @@
 # Firelink - File Sharing App
-<h5>written in PHP</h5>
+written in PHP
 <a href="http://firelnk.rf.gd/" target="_blank">View Web App</a>
 <br>
 * Upload any file & get a shareable link
