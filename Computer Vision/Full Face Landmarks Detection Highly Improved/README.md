@@ -2,8 +2,7 @@
 > “What this algorithm does to the landmarks, is the same thing that a dentist/orthodontist does to his patient's teeth”
 
 <br>
-![improved hair mid](https://user-images.githubusercontent.com/50156227/140418778-f6c5dba1-abc6-475a-97ae-e49cb7686912.gif)
-<img src="https://user-images.githubusercontent.com/50156227/140418778-f6c5dba1-abc6-475a-97ae-e49cb7686912.gif">
+<img src="https://user-images.githubusercontent.com/50156227/140418778-f6c5dba1-abc6-475a-97ae-e49cb7686912.gif" height="480">
 <br>
 <br>
 <h3>What's improved?</h3>
@@ -37,12 +36,12 @@ take a slice from the nose (the most part that's not affected by shadows/lights 
     </li>
     <li>
         <h3>What if the forehead is too clear (bald man)?:</h3>
-        ![improved bald mid](https://user-images.githubusercontent.com/50156227/140418814-a4609dce-9a43-4a30-9518-74242663d93e.gif)
+        <img src="https://user-images.githubusercontent.com/50156227/140418814-a4609dce-9a43-4a30-9518-74242663d93e.gif" height="480">
        <br>
     </li>
     <li>
         <h3>What if the forehead isn't clear, (hair covers it)?:</h3>
-        ![improved haircut mid](https://user-images.githubusercontent.com/50156227/140418889-f76ac8d2-4389-4f30-9f67-cc41d8defd6e.gif)
+        <img src="https://user-images.githubusercontent.com/50156227/140418889-f76ac8d2-4389-4f30-9f67-cc41d8defd6e.gif" height="480">
     </li>
 </ol>
 
