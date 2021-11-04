@@ -3,6 +3,7 @@
 
 <br>
 ![improved hair mid](https://user-images.githubusercontent.com/50156227/140418778-f6c5dba1-abc6-475a-97ae-e49cb7686912.gif)
+<img src="https://user-images.githubusercontent.com/50156227/140418778-f6c5dba1-abc6-475a-97ae-e49cb7686912.gif">
 <br>
 <br>
 <h3>What's improved?</h3>
