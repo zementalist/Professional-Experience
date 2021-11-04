@@ -10,7 +10,7 @@
 <ol>
     <li>
         <b>Better Quality - Method 1:</b><br>
-by using the best of the shape_predictor_68_landmarks (higher quality BUT fewer landmarks) and shape_predictor_81_landmarks (more landmarks -full face- BUT lower quality) we got a high quality full face landmarks detection.<br>
+by using the best of both worlds, the shape_predictor_68_landmarks (higher quality BUT fewer landmarks) and shape_predictor_81_landmarks (more landmarks -full face- BUT lower quality) we got a high quality full face landmarks detection.<br>
     </li>
     <li>
         <b>Better Quality - Method 2:</b><br>
