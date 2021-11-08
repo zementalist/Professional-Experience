@@ -48,7 +48,6 @@
     <li>
         <b>Eyebrow Shape Detector 2</b>: A number to differentiate between (Curved | Angled) eyebrow shapes.
     </li>
-
     <li>
         <b>Eyebrow Slope</b>
     </li>
