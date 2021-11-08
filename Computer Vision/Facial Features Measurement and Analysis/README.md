@@ -9,7 +9,7 @@
 </p>
 
 <h4>Features Visual Description</h4>
-<img src="https://download1484.mediafire.com/drkjgt8xlqwg/2zs5gklhxymt1qs/Screenshot_1.png">
+<img src="https://user-images.githubusercontent.com/50156227/140836123-92d5e97f-059a-437a-ba63-56d95664f667.png">
 
 <h4>Features Textual Description:</h4>
 <ol>
@@ -46,6 +46,7 @@
     <li>
         <b>Eyebrow Shape Detector 2</b>: A number to differentiate between (Curved | Angled) eyebrow shapes.
     </li>
+
     <li>
         <b>Eyebrow Slope</b>
     </li>
