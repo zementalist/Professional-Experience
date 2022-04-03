@@ -1,6 +1,6 @@
-# Object Detection for Beginners: Emoji Localization + Classification
+# Object Detection for Beginners: Emoji Localization & Classification
 
-<h2>Model's Architecture</h2>:
+<h2>Model's Architecture:</h2>
 ![emojicnn](https://user-images.githubusercontent.com/50156227/161410735-4b70ea8f-c37c-4aaa-9d61-ec22136d3890.png)
 
 <h2>Sample result:</h2>
