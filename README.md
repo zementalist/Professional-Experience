@@ -2,11 +2,13 @@
 An organized container of all my projects.
 
 
-(+65) Total Projects<br/>
-(+25) Web Applications<br/>
-(+10) Computer Vision Applications<br/>
-(+10) Deep Learning Applications<br/>
-(+10) Machine Learning Applications<br/>
-(5) Mobile Applications<br/>
-(1) Web Framework<br/>
-(+10) Other<br/>
+(+80) Total Projects
+(+25) Web Applications
+(+20) Computer Vision Applications
+(+20) Deep Learning Applications
+(+15) Machine Learning Applications
+(8) Embedded Systems Applications
+(5) Mobile Applications
+(1) Web Framework
+(+10) Other
+
